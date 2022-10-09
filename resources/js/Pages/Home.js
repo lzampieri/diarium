@@ -1,7 +1,11 @@
 
 
-export default function Home() {
+export default function Home( props ) {
     return (
-        "Hello world!"
+        <>
+            <h1>Diarium</h1>
+            dell'utente {props.user.name}
+            <h3>Indice:</h3>
+        </>
     )
 }

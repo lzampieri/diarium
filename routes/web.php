@@ -14,6 +14,16 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render( 'Home' );
+Route::middleware('auth')->group( function () {
+
+    Route::get('/', function () {
+        return Inertia::render( 'Home' );
+    })->name('home');
+
 });
+
+Route::get('/unlogged', function () {
+    return Inertia::render( 'Unlogged' );
+})->name('unlogged');
+
+include( 'auth.php' );

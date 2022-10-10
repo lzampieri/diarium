@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -17,7 +18,7 @@ use Inertia\Inertia;
 Route::middleware('auth')->group( function () {
 
     Route::get('/', function () {
-        return Inertia::render( 'Home' );
+        return Inertia::render( 'Home', [ 'user' => Auth::user() ] );
     })->name('home');
 
 });

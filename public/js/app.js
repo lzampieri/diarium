@@ -4572,8 +4572,108 @@ function Home(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
       children: "Diarium"
-    }), "dell'utente ", props.user.name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+    }), "dell'utente ", props.user.complete_name, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+        href: route('auth.logout'),
+        children: "Esci"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
       children: "Indice:"
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Register.js":
+/*!****************************************!*\
+  !*** ./resources/js/Pages/Register.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Register)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function Register(props) {
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.useForm)({
+    driver: props.register_params.driver,
+    identifier: props.register_params.identifier,
+    username: props.register_params.username || '',
+    complete_name: props.register_params.complete_name || ''
+  }),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      post = _useForm.post,
+      processing = _useForm.processing,
+      wasSuccessful = _useForm.wasSuccessful,
+      errors = _useForm.errors;
+
+  var fields_labels = {
+    driver: 'Tramite:',
+    identifier: 'Identificativo:',
+    username: 'Nome utente:',
+    complete_name: 'Nome completo:'
+  };
+  var disabled = {
+    driver: true,
+    identifier: true,
+    username: false,
+    complete_name: false
+  };
+
+  function submit(e) {
+    e.preventDefault();
+    post(route('auth.register'));
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+      children: "Registrazione"
+    }), "Benvenuto nella pagina di registrazione di Diarium.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), "Se \xE8 gi\xE0 registrato, \xE8 necessario fare l'", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+      href: route('auth.login'),
+      children: "accesso"
+    }), " con le credenziali usuali, poi scegliere ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+      children: "profilo"
+    }), " \u2192 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+      children: "metodi di accesso"
+    }), " per collegare un nuovo sistema di credenziali.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+      children: "Identit\xE0"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+      onSubmit: submit,
+      children: [Object.keys(fields_labels).map(function (k) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "my-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("small", {
+            children: fields_labels[k]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "text",
+            value: data[k],
+            name: k,
+            id: k,
+            disabled: disabled[k],
+            onChange: function onChange(e) {
+              return setData(k, e.target.value);
+            }
+          }), errors[k] && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("small", {
+            className: "w-full text-red",
+            children: errors[k]
+          })]
+        }, k);
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        onClick: function onClick(e) {
+          return submit(e);
+        },
+        className: "my-4",
+        children: "Registrazione"
+      })]
     })]
   });
 }
@@ -4603,7 +4703,7 @@ function Home(props) {
       children: "Diarium"
     }), "Diarium \xE8 accessibile solo agli utenti registrati.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
       href: route('auth.login'),
-      children: "Login"
+      children: "Accedi"
     })]
   });
 }
@@ -70850,6 +70950,8 @@ module.exports = function getSideChannel() {
 var map = {
 	"./Home": "./resources/js/Pages/Home.js",
 	"./Home.js": "./resources/js/Pages/Home.js",
+	"./Register": "./resources/js/Pages/Register.js",
+	"./Register.js": "./resources/js/Pages/Register.js",
 	"./Unlogged": "./resources/js/Pages/Unlogged.js",
 	"./Unlogged.js": "./resources/js/Pages/Unlogged.js"
 };

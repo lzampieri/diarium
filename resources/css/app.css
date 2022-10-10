@@ -4,7 +4,7 @@
 @font-face { font-style: italic, oblique; font-family: "Computer Modern"; src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf'); }
 @font-face { font-weight: bold; font-style: italic, oblique; font-family: "Computer Modern"; src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf'); } */
 
-@import url('https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css');
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,7 +12,7 @@
 
 @layer base {
     body {
-        font-family: "Computer Modern Serif", serif;
+        font-family: "Quattrocento", sans;
     }
 }
 
@@ -35,7 +35,15 @@
     }
 
     a {
-        @apply underline
+        @apply underline cursor-pointer
+    }
+
+    input {
+        @apply border-b w-full
+    }
+
+    input:disabled {
+        @apply border-none w-full
     }
 }
 

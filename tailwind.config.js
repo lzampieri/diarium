@@ -7,4 +7,8 @@ module.exports = {
         require( './resources/js/theme.js' )
     ,
     plugins: [],
+    safelist: [
+        'bg-info', 'bg-success', 'bg-error', 'bg-warning',
+        'text-info', 'text-success', 'text-error', 'text-warning'
+    ]
 }

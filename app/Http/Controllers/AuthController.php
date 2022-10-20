@@ -12,40 +12,18 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller {
 
-    public static function authRedirect() {
-        return Socialite::driver('google')->redirect();
-    }
-
-    public static function authCallback() {
-        $user = Socialite::driver('google')->user();
-        $loginMethod = LoginMethod::where( 'driver', 'google' )
-                                  ->where( 'identifier', $user->email )
-                                  ->first();
-        if( $loginMethod ) {
-            Auth::login( $loginMethod->user );
-            return redirect()->route( 'home' );
-        } else {
-            return redirect()->route( 'auth.register' )
-                    ->with( 'register_params', [
-                        'driver' => 'google',
-                        'identifier' => $user->email,
-                        'username' => str_replace( '.', '_', substr( $user->email, 0, strpos( $user->email, '@' ) ) ),
-                        'complete_name' => $user->name
-                    ]);
-        }    
-    }
-
+    // General
     public static function authLogout() {
         if( Auth::check() )
             Auth::logout();
         return redirect()->route( 'home' );
     }
 
+    // Registration
     public static function authRegister() {
         if( session()->has( 'register_params' ) )
-            return Inertia::render( 'Register', [ 'register_params' => session( 'register_params' ) ] );
-        // return redirect()->route('home');
-        return Inertia::render( 'Register', [ 'register_params' => [ 'driver' => 'google', 'identifier' => 'zampieri.leonardo98@gmail.com' ] ] );
+            return Inertia::render( 'UserManagement/Register', [ 'register_params' => session( 'register_params' ) ] );
+        return redirect()->route('home');
     }
 
     public static function authRegisterPost( Request $request ) {
@@ -65,14 +43,57 @@ class AuthController extends Controller {
             'complete_name' => $validated['complete_name']
         ]);
 
-        $loginMethod = LoginMethod::create( [
-            'driver' => $validated['driver'],
-            'identifier' => $validated['identifier'],
-            'user_id' => $user->id
-        ]);
+        // If already a login method exists, update id
+        $find = LoginMethod::withTrashed()
+                           ->where( 'driver', $validated['driver'] )
+                           ->where( 'identifier', $validated['identifier'] )
+                           ->first();
+        if( $find ) {
+            // If is trashed, restore it
+            if( $find->trashed() ) {
+                $find->restore();
+            }
+            $find->user_id = $user->id;
+            $find->name = 'Principale';
+            $find->save();
+        } else {
+            LoginMethod::create( [
+                'driver' => $validated['driver'],
+                'identifier' => $validated['identifier'],
+                'name' => 'Principale',
+                'user_id' => $user->id
+            ]);
+        }
+
 
         Auth::login( $user );
         
         return redirect()->route( 'home' );
     }
+
+    // Google
+
+    public static function googleAuthRedirect() {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public static function googleAuthCallback() {
+        $user = Socialite::driver('google')->user();
+        $loginMethod = LoginMethod::where( 'driver', 'google' )
+                                  ->where( 'identifier', $user->email )
+                                  ->first();
+        if( $loginMethod ) {
+            Auth::login( $loginMethod->user );
+            return redirect()->route( 'home' );
+        } else {
+            return redirect()->route( 'auth.register' )
+                    ->with( 'register_params', [
+                        'driver' => 'google',
+                        'identifier' => $user->email,
+                        'username' => str_replace( '.', '_', substr( $user->email, 0, strpos( $user->email, '@' ) ) ),
+                        'complete_name' => $user->name
+                    ]);
+        }    
+    }
+
 }

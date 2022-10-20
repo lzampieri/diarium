@@ -30,9 +30,9 @@ export default function Register( props ) {
 
     return (
         <>
-            <h3>Registrazione</h3>
+            <h2>Registrazione</h2>
             Benvenuto nella pagina di registrazione di Diarium.<br/>
-            Se è già registrato, è necessario fare l'<a href={ route('auth.login') }>accesso</a> con le credenziali usuali, poi scegliere <i>profilo</i> → <i>metodi di accesso</i> per collegare un nuovo sistema di credenziali.<br/>
+            Se è già registrato, è necessario fare l'<a href={ route('unlogged') }>accesso</a> con le credenziali usuali, poi scegliere <i>profilo</i> → <i>metodi di accesso</i> per collegare un nuovo sistema di credenziali.<br/>
             <br/>
 
             <h4>Identità</h4>

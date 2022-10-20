@@ -20,6 +20,7 @@ class CreateLoginMethodsTable extends Migration
 
             $table->string( 'driver', 50 );
             $table->string( 'identifier', 200 );
+            $table->string( 'name', 200 );
 
             $table->foreignId('user_id')->constrained();
 

@@ -45,6 +45,10 @@
     input:disabled {
         @apply border-none w-full
     }
+
+    ul {
+        @apply list-disc
+    }
 }
 
 @layer utilities {

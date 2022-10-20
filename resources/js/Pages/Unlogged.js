@@ -6,7 +6,7 @@ export default function Home( props ) {
         <>
             <h1>Diarium</h1>
             Diarium è accessibile solo agli utenti registrati.<br/>
-            <a href={ route('auth.login') }>Accedi</a>
+            <a href={ route('auth.google.login') }>Accedi con google</a>
         </>
     )
 }

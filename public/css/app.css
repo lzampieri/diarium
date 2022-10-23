@@ -544,6 +544,13 @@ input:disabled{
   width: 100%;
   border-style: none;
 }
+input[type=submit]{
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+  border-width: 0px;
+  text-decoration-line: underline;
+}
 ul{
   list-style-type: disc;
 }
@@ -577,17 +584,45 @@ ul{
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+.-ml-1{
+  margin-left: -0.25rem;
+}
+.mr-3{
+  margin-right: 0.75rem;
+}
+.mr-1{
+  margin-right: 0.25rem;
+}
 .flex{
   display: flex;
 }
 .h-full{
   height: 100%;
 }
+.h-14{
+  height: 3.5rem;
+}
 .min-h-screen{
   min-height: 100vh;
 }
 .w-full{
   width: 100%;
+}
+.w-14{
+  width: 3.5rem;
+}
+.w-fit{
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@keyframes spin{
+
+  to{
+    transform: rotate(360deg);
+  }
+}
+.animate-spin{
+  animation: spin 1s linear infinite;
 }
 .cursor-pointer{
   cursor: pointer;
@@ -603,6 +638,9 @@ ul{
 }
 .justify-center{
   justify-content: center;
+}
+.gap-4{
+  gap: 1rem;
 }
 .rounded-lg{
   border-radius: 0.5rem;
@@ -674,6 +712,14 @@ ul{
   font-size: 1.5rem;
   line-height: 2rem;
 }
+.text-3xl{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
 .text-info{
   --tw-text-opacity: 1;
   color: rgb(33 150 243 / var(--tw-text-opacity));
@@ -698,10 +744,32 @@ ul{
   --tw-text-opacity: 1;
   color: rgb(237 67 55 / var(--tw-text-opacity));
 }
+.opacity-25{
+  opacity: 0.25;
+}
+.opacity-75{
+  opacity: 0.75;
+}
 .shadow-2xl{
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.clickableIcon{
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  cursor: pointer;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding: 0.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+.clickableIcon:hover{
+  background-color: #000000aa;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:text-black:hover{

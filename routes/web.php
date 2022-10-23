@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ Route::get('/unlogged', function () {
 })->name('unlogged');
 
 include( 'auth.php' );
+
+Route::get('/logs', [LogViewerController::class, 'index']);

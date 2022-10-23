@@ -11,3 +11,7 @@ Route::get('/', function () {
 
 Route::get('/user/profile', [UserController::class, 'userProfile'])
     ->name('user.profile');
+Route::post('/user/renameLoginMethods', [UserController::class, 'renameLoginMethods'])
+    ->name('user.renameLoginMethods');
+Route::post('/user/deleteLoginMethod', [UserController::class, 'deleteLoginMethod'])
+    ->name('user.deleteLoginMethod');

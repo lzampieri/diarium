@@ -46,11 +46,17 @@
         @apply border-none w-full
     }
 
+    input[type=submit] {
+        @apply border-0 w-fit cursor-pointer underline
+    }
+
     ul {
         @apply list-disc
     }
 }
 
 @layer utilities {
-   
+    .clickableIcon {
+        @apply rounded-full text-black bg-white hover:text-white hover:bg-halfblack cursor-pointer mx-1 p-1
+    }
 }

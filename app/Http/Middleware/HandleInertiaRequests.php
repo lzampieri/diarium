@@ -38,10 +38,14 @@ class HandleInertiaRequests extends Middleware
     {
         $data = parent::share($request);
 
-        if( session()->has('generalInfo') ) {
-            $data = array_merge( $data, [ 'generalInfo' => session('generalInfo') ] );
+        if (session()->has('generalInfo')) {
+            $data = array_merge($data, ['generalInfo' => session('generalInfo')]);
         }
-        
+
+        if (session()->has('snackbars')) {
+            $data = array_merge($data, ['snackbars' => session('snackbars')]);
+        }
+
         return $data;
     }
 }

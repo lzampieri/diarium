@@ -47,6 +47,12 @@ return [
             'level' => 'debug',
         ],
 
+        'internal' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/internal.log'),
+            'level' => 'debug',
+        ],
+
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),

@@ -74,6 +74,7 @@ export default function LoginMethods({ user, methods }) {
             <h4>Aggiungi metodi di login</h4>
             <ul>
                 <li><a href={route('auth.google.login')}>Google</a></li>
+                <li><a href={route('user.generateTOTP')}>One-time password</a></li>
             </ul>
         </>
     )

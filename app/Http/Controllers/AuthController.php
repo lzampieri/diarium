@@ -6,8 +6,10 @@ use App\Models\LoginMethod;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
 use Inertia\Inertia;
 use Laravel\Socialite\Facades\Socialite;
+use PragmaRX\Google2FA\Google2FA;
 
 class AuthController extends Controller
 {
@@ -72,7 +74,7 @@ class AuthController extends Controller
                 ]);
             }
 
-            LogController::debug('New login method associated', ['Method' => $loginMethod], ['associated to' => Auth::user() ]);
+            LogController::debug('New login method associated', ['Method' => $loginMethod], ['associated to' => Auth::user()]);
             return redirect()->route('user.profile')->with('snackbars', [['success', 'Associazione eseguita']]);
         }
 
@@ -105,17 +107,62 @@ class AuthController extends Controller
             $user->email,
             [
                 'username' => str_replace('.', '_', substr($user->email, 0, strpos($user->email, '@'))),
-                'completeName' => $user->name
+                'complete_name' => $user->name
             ]
         );
+    }
+
+    // TOTP
+    public static function saveTOTP(Request $request)
+    {
+        $validated = $request->validate([
+            'secretKey' => 'required',
+            'name' => 'required|min:3'
+        ]);
+
+        LoginMethod::create([
+            'driver' => 'totp',
+            'identifier' => $validated['secretKey'],
+            'name' => $validated['name'],
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect()->route('user.profile');
+    }
+    public static function totpLogin(Request $request) {
+        $validated = $request->validate([
+            'username' => 'required',
+            'password' => 'required|min:6'
+        ]);
+
+        $user = User::where('username',$validated['username'])->first();
+
+        if( !$user ) {
+            return redirect()->back()->withErrors(new MessageBag(["login" => "Utente non riconosciuto"]));
+        }
+        
+        $lmth = $user->loginMethods()->where('driver','totp')->first();
+        if( !$lmth ) {
+            return redirect()->back()->withErrors(new MessageBag(["login" => "Questo utente non ha ancora abilitato le one-time password"]));
+        }
+        
+        $google2fa = new Google2FA();
+        $valid = $google2fa->verifyKey( $lmth->identifier, $validated['password']);
+        if( !$valid ) {
+            return redirect()->back()->withErrors(new MessageBag(["login" => "Codice non valido"]));
+        }
+
+        Auth::login( $user );
+
+        return redirect()->route('home');
     }
 
 
     // Registration
     public static function authRegister()
     {
-        if (session()->has('register_params'))
-            return Inertia::render('UserManagement/Register', ['register_params' => session('register_params')]);
+        if (session()->has('registerParams'))
+            return Inertia::render('UserManagement/Register', ['registerParams' => session('registerParams')]);
         return redirect()->route('home');
     }
 
@@ -123,7 +170,7 @@ class AuthController extends Controller
     {
 
         $validated = $request->validate([
-            'driver' => 'required|in:' . implode(',',LoginMethod::registrableDrivers),
+            'driver' => 'required|in:' . implode(',', LoginMethod::registrableDrivers),
             'identifier' => 'required',
             'username' => 'required|alpha_dash|unique:users,username',
             'complete_name' => 'required'

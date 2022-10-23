@@ -9,7 +9,7 @@ class LoginMethod extends Model
 {
     use SoftDeletes;
 
-    public const availableDrivers = ['google'];
+    public const availableDrivers = ['google','totp'];
     public const registrableDrivers = ['google'];
 
     protected $fillable = [

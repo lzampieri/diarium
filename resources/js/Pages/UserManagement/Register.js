@@ -1,13 +1,13 @@
-import { Link, useForm } from "@inertiajs/inertia-react";
+import { useForm } from "@inertiajs/inertia-react";
 
 
 export default function Register( props ) {
 
     const { data, setData, post, processing, wasSuccessful, errors } = useForm({
-        driver: props.register_params.driver,
-        identifier: props.register_params.identifier,
-        username: props.register_params.username || '',
-        complete_name: props.register_params.complete_name || ''
+        driver: props.registerParams.driver,
+        identifier: props.registerParams.identifier,
+        username: props.registerParams.username || '',
+        complete_name: props.registerParams.complete_name || ''
     })
 
     const fields_labels = {

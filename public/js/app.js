@@ -5153,6 +5153,7 @@ function MainWrapper(page) {
       });
     }
   }, []);
+  console.log(page.props);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(notistack__WEBPACK_IMPORTED_MODULE_0__.SnackbarProvider, {
     children: [page.props.generalInfo && page.props.generalInfo.map(function (g, i) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_GeneralModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -5199,6 +5200,90 @@ function Home(props) {
 
 /***/ }),
 
+/***/ "./resources/js/Pages/TOTPLogin.js":
+/*!*****************************************!*\
+  !*** ./resources/js/Pages/TOTPLogin.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TOTPLogin)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var notistack__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! notistack */ "./node_modules/notistack/notistack.esm.js");
+/* harmony import */ var _GeneralComponents_LoadingBackdrop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../GeneralComponents/LoadingBackdrop */ "./resources/js/GeneralComponents/LoadingBackdrop.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+function TOTPLogin() {
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.useForm)({
+    username: '',
+    password: ''
+  }),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      post = _useForm.post,
+      processing = _useForm.processing,
+      errors = _useForm.errors;
+
+  var onSubmit = function onSubmit(e) {
+    e.preventDefault();
+    post(route('auth.totp.login'), {
+      onError: function onError(errors) {
+        if (errors.login) (0,notistack__WEBPACK_IMPORTED_MODULE_1__.enqueueSnackbar)(errors.login, {
+          variant: 'error'
+        });
+      }
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+      children: "Diarium"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
+      children: "Login tramite One-Time password"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_GeneralComponents_LoadingBackdrop__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      open: processing
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+      onSubmit: onSubmit,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("small", {
+        children: "Username"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        type: "text",
+        value: data.username,
+        onChange: function onChange(e) {
+          return setData('username', e.target.value);
+        }
+      }), errors.username && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "text-error text-xs",
+        children: errors.username
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("small", {
+        children: "One-time password"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        type: "password",
+        value: data.password,
+        onChange: function onChange(e) {
+          return setData('password', e.target.value);
+        }
+      }), errors.password && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "text-error text-xs",
+        children: errors.password
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        type: "submit",
+        value: "Accedi"
+      })]
+    })]
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Unlogged.js":
 /*!****************************************!*\
   !*** ./resources/js/Pages/Unlogged.js ***!
@@ -5223,6 +5308,133 @@ function Home(props) {
     }), "Diarium \xE8 accessibile solo agli utenti registrati.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
       href: route('auth.google.login'),
       children: "Accedi con google"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+      href: route('auth.totp.login'),
+      children: "Accedi con one-time password"
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/UserManagement/AddTOTPLoginMethod.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/UserManagement/AddTOTPLoginMethod.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AddTOTPLoginMethod)
+/* harmony export */ });
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.mjs");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var notistack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! notistack */ "./node_modules/notistack/notistack.esm.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../theme */ "./resources/js/theme.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_theme__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _GeneralComponents_LoadingBackdrop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../GeneralComponents/LoadingBackdrop */ "./resources/js/GeneralComponents/LoadingBackdrop.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+function AddTOTPLoginMethod(props) {
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.useForm)({
+    secretKey: props.secretKey,
+    name: 'Autenticazione TOTP'
+  }),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      post = _useForm.post,
+      processing = _useForm.processing,
+      errors = _useForm.errors;
+
+  var onSubmit = function onSubmit(e) {
+    e.preventDefault();
+    post(route('user.saveTOTP'), {
+      onSuccess: function onSuccess() {
+        return (0,notistack__WEBPACK_IMPORTED_MODULE_2__.enqueueSnackbar)('Credenziali inserite con successo', {
+          variant: 'success'
+        });
+      }
+    });
+  };
+
+  var copyText = function copyText() {
+    navigator.clipboard.writeText(props.secretKey);
+    (0,notistack__WEBPACK_IMPORTED_MODULE_2__.enqueueSnackbar)('Chiave copiata negli appunti', {
+      variant: 'info'
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
+      children: "Creazioni credenziali one-time-password"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_GeneralComponents_LoadingBackdrop__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      open: processing
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "w-full text-center flex flex-col items-center",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 400 400",
+        className: "h-60 w-60",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("g", {
+          transform: "scale(8.163)",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("g", {
+            transform: "translate(4,4)",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+              fillRule: "evenodd",
+              d: props.qrCode,
+              fill: (_theme__WEBPACK_IMPORTED_MODULE_3___default().colors.black)
+            })
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "w-full flex flex-row justify-center",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          type: "text",
+          value: props.secretKey,
+          className: "text-center",
+          style: {
+            width: 'fit-content'
+          },
+          disabled: true
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_0__.FontAwesomeIcon, {
+          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__.faClipboard,
+          className: "clickableIcon",
+          onClick: copyText
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "Scansiona il qr-code o copia la chiave ed inseriscila in un'applicazione per la generazione di OneTime-password, e.g. Google Authenticator, Microsoft Authenticator o 2FA-Authenticator. Se richiesto, seleziona ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+      children: "Autenticazione basata sul tempo"
+    }), ".", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
+      children: "Attenzione: l'autenticazione non sar\xE0 abilitata fino alla pressione del pulsante \"Salva\" qui sotto."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+      onSubmit: onSubmit,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("small", {
+        children: "Nome delle credenziali:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        type: "text",
+        value: data.name,
+        onChange: function onChange(e) {
+          return setData('name', e.target.value);
+        }
+      }), errors.name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("small", {
+          className: "text-error",
+          children: errors.name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        type: "submit",
+        value: "Salva"
+      })]
     })]
   });
 }
@@ -5413,13 +5625,18 @@ function LoginMethods(_ref) {
       children: "Modifica"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h4", {
       children: "Aggiungi metodi di login"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ul", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
           href: route('auth.google.login'),
           children: "Google"
         })
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
+          href: route('user.generateTOTP'),
+          children: "One-time password"
+        })
+      })]
     })]
   });
 }
@@ -5445,10 +5662,10 @@ __webpack_require__.r(__webpack_exports__);
 
 function Register(props) {
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.useForm)({
-    driver: props.register_params.driver,
-    identifier: props.register_params.identifier,
-    username: props.register_params.username || '',
-    complete_name: props.register_params.complete_name || ''
+    driver: props.registerParams.driver,
+    identifier: props.registerParams.identifier,
+    username: props.registerParams.username || '',
+    complete_name: props.registerParams.complete_name || ''
   }),
       data = _useForm.data,
       setData = _useForm.setData,
@@ -74666,8 +74883,12 @@ module.exports = function getSideChannel() {
 var map = {
 	"./Home": "./resources/js/Pages/Home.js",
 	"./Home.js": "./resources/js/Pages/Home.js",
+	"./TOTPLogin": "./resources/js/Pages/TOTPLogin.js",
+	"./TOTPLogin.js": "./resources/js/Pages/TOTPLogin.js",
 	"./Unlogged": "./resources/js/Pages/Unlogged.js",
 	"./Unlogged.js": "./resources/js/Pages/Unlogged.js",
+	"./UserManagement/AddTOTPLoginMethod": "./resources/js/Pages/UserManagement/AddTOTPLoginMethod.js",
+	"./UserManagement/AddTOTPLoginMethod.js": "./resources/js/Pages/UserManagement/AddTOTPLoginMethod.js",
 	"./UserManagement/Components/LoginMethods": "./resources/js/Pages/UserManagement/Components/LoginMethods.js",
 	"./UserManagement/Components/LoginMethods.js": "./resources/js/Pages/UserManagement/Components/LoginMethods.js",
 	"./UserManagement/Register": "./resources/js/Pages/UserManagement/Register.js",

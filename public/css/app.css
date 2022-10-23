@@ -378,7 +378,7 @@ video {
 
 body {
         font-family: "Quattrocento", sans;
-    }
+        text-align: justify}
 
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
@@ -596,11 +596,17 @@ ul{
 .flex{
   display: flex;
 }
+.hidden{
+  display: none;
+}
 .h-full{
   height: 100%;
 }
 .h-14{
   height: 3.5rem;
+}
+.h-60{
+  height: 15rem;
 }
 .min-h-screen{
   min-height: 100vh;
@@ -611,9 +617,15 @@ ul{
 .w-14{
   width: 3.5rem;
 }
+.w-60{
+  width: 15rem;
+}
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
+}
+.transform{
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 @keyframes spin{
 
@@ -626,6 +638,9 @@ ul{
 }
 .cursor-pointer{
   cursor: pointer;
+}
+.flex-row{
+  flex-direction: row;
 }
 .flex-col{
   flex-direction: column;
@@ -719,6 +734,10 @@ ul{
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 .text-info{
   --tw-text-opacity: 1;

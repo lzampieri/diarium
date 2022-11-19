@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
+use Tabuna\Breadcrumbs\Trail;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,9 @@ Route::middleware('auth')->group( function () {
 });
 
 Route::get('/unlogged', function () {
-    return Inertia::render( 'Unlogged' );
-})->name('unlogged');
+    return Inertia::render( 'Auth/Unlogged' );
+})->name('unlogged')
+  ->breadcrumbs( function (Trail $trail) { $trail->push('Accesso', route('unlogged') ); } );
 
 include( 'auth.php' );
 

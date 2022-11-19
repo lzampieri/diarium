@@ -2,9 +2,6 @@ import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
-import theme from "../theme";
-
-
 export default function GeneralModal({ data }) {
     const [show, setShow] = useState(true)
 

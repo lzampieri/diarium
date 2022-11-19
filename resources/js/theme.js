@@ -1,5 +1,5 @@
 module.exports = {
-    colors: {
+    palette: {
         transparent: 'transparent',
         current: 'currentColor',
         halfblack: '#000000aa',
@@ -7,9 +7,19 @@ module.exports = {
         white: '#ffffff',
         grey: '#d3d3d3',
         red: '#ED4337',
-        info: '#2196f3',
-        warning: '#ff9800',
-        success: '#43a047',
-        error: '#d32f2f'
+        text: { main: '#000000' }
     },
+    typography: {
+        fontFamily: '"Quattrocento", sans'
+    },
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                body: {
+                    minHeight: '100px',
+                    backgroundColor: '#d3d3d3'
+                }
+            }
+        }
+    }
 }

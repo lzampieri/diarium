@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Tabuna\Breadcrumbs\Breadcrumbs;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -46,6 +48,33 @@ class HandleInertiaRequests extends Middleware
             $data = array_merge($data, ['snackbars' => session('snackbars')]);
         }
 
+        $data = array_merge($data, ['breadcrumbs' => $this->generateBreadcrumbs($request)]);
+
         return $data;
+    }
+
+    public function generateBreadcrumbs(Request $request)
+    {
+        if (!($route = $request->route()) instanceof Route) {
+            return [];
+        }
+
+        if (!Breadcrumbs::has($route->getName())) {
+            return [];
+        }
+
+        $breadcrumbs = Breadcrumbs::generate($route->getName(), ...$route->parameters());
+
+        $collector = [];
+
+        foreach ($breadcrumbs as $breadcrumb) {
+            array_push($collector, [
+                'title' => $breadcrumb->title(),
+                'current' => $request->fullUrlIs($breadcrumb->url()),
+                'url' => $breadcrumb->url(),
+            ]);
+        }
+
+        return $collector;
     }
 }

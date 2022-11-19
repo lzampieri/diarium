@@ -5,7 +5,7 @@ import { render } from 'react-dom'
 import { createInertiaApp } from '@inertiajs/inertia-react'
 import { InertiaProgress } from '@inertiajs/progress'
 import $ from 'jquery';
-import MainWrapper from './GeneralComponents/MainWrapper';
+import MainWrapper from './Layout/MainWrapper';
 
 window.$ = $;
 
@@ -20,4 +20,4 @@ createInertiaApp({
     },
 })
 
-InertiaProgress.init()
+InertiaProgress.init( { delay: 0, showSpinner: true } )

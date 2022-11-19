@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Tabuna\Breadcrumbs\BreadcrumbsServiceProvider::class,
 
         /*
          * Application Service Providers...

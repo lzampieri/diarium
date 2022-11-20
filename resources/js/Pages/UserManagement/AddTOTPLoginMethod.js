@@ -4,6 +4,10 @@ import { useForm } from '@inertiajs/inertia-react';
 import { enqueueSnackbar } from 'notistack';
 import theme from '../../theme';
 import LoadingBackdrop from '../../GeneralComponents/LoadingBackdrop';
+import SettingsLayout from '../../Layout/SettingsLayout';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { Alert, Box, IconButton, InputAdornment, Stack, TextField } from '@mui/material';
+import Button from '../../Components/Button';
 
 export default function AddTOTPLoginMethod(props) {
     const { data, setData, post, processing, errors } = useForm({
@@ -13,46 +17,56 @@ export default function AddTOTPLoginMethod(props) {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        post( route('user.saveTOTP'), {
-            onSuccess: () => enqueueSnackbar('Credenziali inserite con successo', { variant: 'success'})
-        } )
+        post(route('user.saveTOTP'), {
+            onSuccess: () => enqueueSnackbar('Credenziali inserite con successo', { variant: 'success' })
+        })
     }
-    
+
     const copyText = () => {
-        navigator.clipboard.writeText( props.secretKey );
-        enqueueSnackbar('Chiave copiata negli appunti', { variant: 'info'});
+        navigator.clipboard.writeText(props.secretKey);
+        enqueueSnackbar('Chiave copiata negli appunti', { variant: 'info' });
     }
 
     return (
-        <>
+        <SettingsLayout>
             <h4>Creazioni credenziali one-time-password</h4>
-            <LoadingBackdrop open={ processing } />
-            <div className="w-full text-center flex flex-col items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" className="h-60 w-60">
-                    <g transform="scale(8.163)">
-                        <g transform="translate(4,4)">
-                            <path fillRule="evenodd" d={props.qrCode} fill={ theme.colors.black } />
+            <LoadingBackdrop open={processing} />
+            <Stack alignItems="center" width={1}>
+                <Box sx={{ height: '40vh', aspectRatio: "1" }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+                        <g transform="scale(8.163)">
+                            <g transform="translate(4,4)">
+                                <path fillRule="evenodd" d={props.qrCode} fill={theme.palette.black} />
+                            </g>
                         </g>
-                    </g>
-                </svg>
-                <div className="w-full flex flex-row justify-center">
-                    <input type="text" value={props.secretKey} className="text-center" style={{ width: 'fit-content'}} disabled/>
-                    <FontAwesomeIcon icon={faClipboard} className="clickableIcon" onClick={copyText} />
-                </div>
-            </div>
-            
-            <br/><br/>
+                    </svg>
+                </Box>
+                <TextField
+                    variant="filled" 
+                    value={props.secretKey}
+                    disabled
+                    inputProps={{ style: { paddingTop: 8, paddingBottom: 8 } }}
+                    InputProps={{
+                        endAdornment: <InputAdornment position="end"><IconButton onClick={copyText} size="small"><ContentCopyIcon fontSize="small"/></IconButton></InputAdornment>,
+                    }} />
+            </Stack>
+
+            <br /><br />
             Scansiona il qr-code o copia la chiave ed inseriscila in un'applicazione per la generazione di OneTime-password, e.g. Google Authenticator, Microsoft Authenticator o 2FA-Authenticator. Se richiesto, seleziona <i>Autenticazione basata sul tempo</i>.
 
-            <br/><br/>
-            <b>Attenzione: l'autenticazione non sarà abilitata fino alla pressione del pulsante "Salva" qui sotto.</b>
+            <br /><br />
+            <Alert severity="warning">Attenzione: l'autenticazione non sarà abilitata fino alla pressione del pulsante "Salva" qui sotto.</Alert>
 
-            <form onSubmit={onSubmit}>
-                <small>Nome delle credenziali:</small><br/>
-                <input type="text" value={data.name} onChange={ e => setData('name', e.target.value)} />
-                {errors.name && <><small className="text-error">{errors.name}</small><br/></>}
-                <input type="submit" value="Salva" />
-            </form>
-        </>
+            <Stack component="form" onSubmit={onSubmit} alignItems="center" sx={{ mt: 4}} spacing={1}>
+                <TextField
+                        label="Salva come:"
+                        variant="outlined"
+                        value={data.name}
+                        onChange={e => setData('name',e.target.value)}
+                        error={!!errors.name}
+                        helperText={errors.name} />
+                <Button type="submit">Salva</Button>
+            </Stack>
+        </SettingsLayout>
     )
 }

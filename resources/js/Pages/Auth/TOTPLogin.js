@@ -31,7 +31,7 @@ export default function TOTPLogin() {
                     variant="outlined"
                     value={data.username}
                     onChange={e => setData('username',e.target.value)}
-                    error={errors.username}
+                    error={!!errors.username}
                     helperText={errors.username} />
                 <TextField
                     label="One-time password"
@@ -39,9 +39,9 @@ export default function TOTPLogin() {
                     type="password"
                     value={data.password}
                     onChange={e => setData('password',e.target.value)}
-                    error={errors.password}
+                    error={!!errors.password}
                     helperText={errors.password} />
-                <Button type="submit" component="button">Accedi</Button>
+                <Button type="submit">Accedi</Button>
             </Stack>
         </SettingsLayout>
     )

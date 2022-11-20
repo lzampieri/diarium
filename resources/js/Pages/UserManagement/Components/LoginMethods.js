@@ -1,29 +1,47 @@
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Inertia } from "@inertiajs/inertia";
 import { useForm } from "@inertiajs/inertia-react";
 import { enqueueSnackbar } from "notistack";
 import { useState } from "react";
+import List from "../../../GeneralComponents/List";
+import ListItem from "../../../GeneralComponents/ListItem";
 import LoadingBackdrop from "../../../GeneralComponents/LoadingBackdrop";
-
+import KeyIcon from '@mui/icons-material/Key';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from "../../../Components/Button";
+import { IconButton, ListItemText, Stack, TextField } from "@mui/material";
 
 function showMethod(m, editMode, name, setData, error, deleteCallback) {
-    let text;
-    if (m.driver == 'google') text = <>Login tramite google: <i>{m.identifier}</i></>;
+    let subtext = "";
+    if (m.driver == 'google') subtext = <><b>Google</b> <i>{m.identifier}</i></>;
+    if (m.driver == 'totp') subtext = <><b>OneTime password</b></>;
 
     if (editMode) {
         return (
-            <li key={m.id}>
-                <FontAwesomeIcon icon={faTrash} className="clickableIcon" onClick={() => deleteCallback( m.id )} />
-                <input type="text" className="w-fit mr-1" value={name} onChange={e => setData('lm_' + m.id, e.target.value) } size={10} />
-                {text}<br/>
-                { error && <small className="text-error">{ error }</small>}
-            </li>
+            <ListItem
+                key={m.id}
+                icon={<KeyIcon />}>
+                <ListItemText>
+                    <TextField
+                        label={ subtext }
+                        variant="outlined"
+                        value={ name }
+                        onChange={e => setData('lm_' + m.id, e.target.value)}
+                        error={!!error}
+                        helperText={error} />
+                    <IconButton onClick={() => deleteCallback(m.id)}><DeleteIcon /></IconButton>
+                </ListItemText>
+            </ListItem>
         )
     }
 
     return (
-        <li key={m.id}><b>{name}</b> {text}</li>
+        <ListItem
+            key={m.id}
+            icon={<KeyIcon />}
+            primary={name}
+            secondary={subtext}>
+        </ListItem>
     )
 }
 
@@ -35,47 +53,41 @@ export default function LoginMethods({ user, methods }) {
         methods.reduce((dict, el) => (dict['lm_' + el.id] = el.name, dict), {})
     )
 
-    const deleteCallback = async ( id ) => {
-        setDeleting( true );
+    const deleteCallback = async (id) => {
+        setDeleting(true);
         Inertia.post(
-            route( 'user.deleteLoginMethod' ),
+            route('user.deleteLoginMethod'),
             { id: id },
             {
                 errorBag: "deleting",
-                onSuccess: ( ) => enqueueSnackbar( "Credenziali eliminate", { variant: 'success' } ),
-                onError: ( errors ) => { enqueueSnackbar( errors.deleting, { variant: 'error' } ), setDeleting( false ) },
+                onSuccess: () => enqueueSnackbar("Credenziali eliminate", { variant: 'success' }),
+                onError: (errors) => { enqueueSnackbar(errors.deleting, { variant: 'error' }), setDeleting(false) },
                 preserveState: false
             })
-    } 
+    }
 
     const onSubmit = (e) => {
         e.preventDefault()
-        post( route('user.renameLoginMethods'), {
+        post(route('user.renameLoginMethods'), {
             onSuccess: () => {
-                setEditMode( false )
-                enqueueSnackbar( "Salvataggio effettuato", { variant: 'success' } )
+                setEditMode(false)
+                enqueueSnackbar("Salvataggio effettuato", { variant: 'success' })
             }
-        } )
+        })
     }
 
     return (
-        <>
-            <h4>Metodi di login registrati</h4>
-            <LoadingBackdrop open={ processing || deleting } />
-            <form onSubmit={ onSubmit }>
-            <ul>
-                {
-                    methods.map(m => showMethod(m, editMode, data['lm_' + m.id], setData, errors['lm_' + m.id], deleteCallback))
-                }
-            </ul>
-                {editMode && <input type="submit" className="text-xs" value="Salva"/>}
-            </form>
-            {!editMode && <a className="text-xs" onClick={() => setEditMode(true)}>Modifica</a>}
-            <h4>Aggiungi metodi di login</h4>
-            <ul>
-                <li><a href={route('auth.google.login')}>Google</a></li>
-                <li><a href={route('user.generateTOTP')}>One-time password</a></li>
-            </ul>
-        </>
+        <List component="form" onSubmit={onSubmit} title="Metodi di login registrati">
+            <LoadingBackdrop open={processing || deleting} />
+            {
+                methods.map(m => showMethod(m, editMode, data['lm_' + m.id], setData, errors['lm_' + m.id], deleteCallback))
+            }
+            <Stack direction="row" alignItems="center" spacing={2} sx={{ mt: 2 }} >
+                {editMode && <Button type="submit">Salva</Button>}
+                {!editMode && <Button onClick={() => setEditMode(true)}>Modifica</Button>}
+                <Button icon={ <AddIcon />} to={route('auth.google.login')} component="a">Google</Button>
+                <Button icon={ <AddIcon />} to={route('user.generateTOTP')}>OneTime password</Button>
+            </Stack>
+        </List>
     )
 }

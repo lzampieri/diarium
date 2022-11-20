@@ -1,7 +1,11 @@
 import { useForm } from "@inertiajs/inertia-react";
+import { Stack, TextField } from "@mui/material";
+import Button from "../../Components/Button";
+import InertiaLink from "../../Components/InertiaLink";
+import LoadingBackdrop from "../../GeneralComponents/LoadingBackdrop";
+import SettingsLayout from "../../Layout/SettingsLayout";
 
-
-export default function Register( props ) {
+export default function Register(props) {
 
     const { data, setData, post, processing, wasSuccessful, errors } = useForm({
         driver: props.registerParams.driver,
@@ -25,32 +29,34 @@ export default function Register( props ) {
 
     function submit(e) {
         e.preventDefault()
-        post( route( 'auth.register' ) )
-    }      
+        post(route('auth.register'))
+    }
 
     return (
-        <>
-            <h2>Registrazione</h2>
-            Benvenuto nella pagina di registrazione di Diarium.<br/>
-            Se è già registrato, è necessario fare l'<a href={ route('unlogged') }>accesso</a> con le credenziali usuali, poi scegliere <i>profilo</i> → <i>metodi di accesso</i> per collegare un nuovo sistema di credenziali.<br/>
-            <br/>
+        <SettingsLayout>
+            <h3>Registrazione</h3>
+            Benvenuto nella pagina di registrazione di Diarium.<br />
+            Se è già registrato, è necessario fare l'<InertiaLink to={route('unlogged')}>accesso</InertiaLink> con le credenziali usuali, poi scegliere <i>profilo</i> → <i>metodi di accesso</i> per collegare un nuovo sistema di credenziali.<br />
+            <br />
 
-            <h4>Identità</h4>
-            <form onSubmit={submit}>
-            {
-                Object.keys( fields_labels ).map( ( k ) => 
-                    <div key={k} className="my-2">
-                        <small>{ fields_labels[k] }</small><br/>
-                        <input type='text' value={ data[k] } name={k} id={k} disabled={ disabled[k] } onChange={ e => setData( k, e.target.value ) } />
-                        { errors[k] && 
-                            <small className="w-full text-red">{errors[k]}</small>
-                        }
-                    </div>
-                )
-            }
-            <br/>
-            <a onClick={ (e) => submit(e) } className="my-4">Registrazione</a>
-            </form>
-        </>
+            <Stack component="form" onSubmit={submit} alignItems="center" spacing={2} width={1} >
+                <LoadingBackdrop open={processing} />
+                {
+                    Object.keys(fields_labels).map((k) =>
+                        <TextField
+                            key={k}
+                            label={fields_labels[k]}
+                            variant="outlined"
+                            value={data[k]}
+                            disabled={disabled[k]}
+                            onChange={e => setData(k, e.target.value)}
+                            error={!!errors[k]}
+                            helperText={errors[k]} />
+                    )
+                }
+                <br />
+                <Button type="submit" component="button">Registrazione</Button>
+            </Stack>
+        </SettingsLayout>
     )
 }

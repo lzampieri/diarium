@@ -1,13 +1,13 @@
 import LoginMethods from "./Components/LoginMethods";
-
+import SettingsLayout from "../../Layout/SettingsLayout";
 
 export default function Home( props ) {
     return (
-        <>
-            <h2>Profilo</h2>
-            <h3>{ props.user.complete_name }</h3>
+        <SettingsLayout>
+            <h3>Profilo</h3>
+            <h4>{ props.user.complete_name }</h4>
 
             <LoginMethods user={ props.user } methods={ props.loginMethods } />
-        </>
+        </SettingsLayout>
     )
 }

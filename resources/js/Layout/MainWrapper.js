@@ -10,7 +10,7 @@ export default function MainWrapper(page) {
         if (page.props.snackbars) {
             page.props.snackbars.forEach((sb) => enqueueSnackbar(sb[1], { variant: sb[0] }));
         }
-    }, [])
+    }, [ page.props ])
 
     return (
         <SnackbarProvider>

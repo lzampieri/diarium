@@ -1,4 +1,4 @@
-import { Container, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { enqueueSnackbar, SnackbarProvider } from 'notistack';
 import { useEffect } from 'react';
 import GeneralModal from '../GeneralComponents/GeneralModal';
@@ -16,10 +16,10 @@ export default function MainWrapper(page) {
         <SnackbarProvider>
             <ThemeProvider theme={createTheme(theme)}>
                 <CssBaseline />
-                <Container sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', width: "100%" }}>
                     {page.props.generalInfo && page.props.generalInfo.map((g, i) => <GeneralModal key={i} data={g} />)}
                     {page}
-                </Container>
+                </Box>
             </ThemeProvider>
         </SnackbarProvider>
     )

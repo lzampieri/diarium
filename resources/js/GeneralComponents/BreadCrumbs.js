@@ -6,7 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 function getComponent( breadcrumb ) {
     if( breadcrumb.title.toLowerCase() == "home" )
         if( breadcrumb.current )
-            return <HomeIcon sx={{ verticalAlign: "bottom" }} />
+            return <HomeIcon sx={{ verticalAlign: "bottom" }} key="home" />
         else
             return <InertiaLink key={ breadcrumb.url } to={ breadcrumb.url } ><HomeIcon sx={{ verticalAlign: "bottom", '&:hover': { color: 'black' } }} color="disabled" /></InertiaLink>
 
@@ -23,7 +23,7 @@ export default function BreadCrumbs() {
         return "";
 
     return (
-        <Paper elevation={0} variant="outlined" sx={{ px: 2, mb: 2 }}>
+        <Paper elevation={0} variant="outlined" sx={{ px: 2 }}>
             <MuiBreadCrumbs aria-label="breadcrumb">
                 { breadcrumbs.map( ( breadcrumb ) => getComponent( breadcrumb ) ) }
             </MuiBreadCrumbs>

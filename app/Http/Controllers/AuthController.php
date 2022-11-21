@@ -40,12 +40,11 @@ class AuthController extends Controller
 
             // If already associate, give an info
             if ($loginMethod->user_id == Auth::user()->id) {
-                LogController::debug('Try to login again', ['via' => $loginMethod]);
                 return redirect()->route('user.profile')->with('snackbars', [['info', 'Le credenziali scelte sono già associate.']]);
             }
 
             // If associated to another user, give an error
-            LogController::debug('Try to login', ['via' => $loginMethod], ['as' => $loginMethod->user]);
+            LogController::debug('Avoided login using other user credentials', ['via' => $loginMethod], ['from' => Auth::user()]);
             return redirect()->route('user.profile')->with('generalInfo', [['error', 'Già in uso', 'Le credenziali scelte sono già in uso da un altro utente.']]);
         }
 
@@ -120,14 +119,15 @@ class AuthController extends Controller
             'name' => 'required|min:3'
         ]);
 
-        LoginMethod::create([
+        $loginMethod = LoginMethod::create([
             'driver' => 'totp',
             'identifier' => $validated['secretKey'],
             'name' => $validated['name'],
             'user_id' => Auth::user()->id
         ]);
 
-        return redirect()->route('user.profile');
+        LogController::debug('New login method associated', ['Method' => $loginMethod], ['associated to' => Auth::user()]);
+        return redirect()->route('user.profile')->with('snackbars', [['success', 'Credenziali inserite con successo']]);
     }
     public static function totpLogin(Request $request) {
         $validated = $request->validate([
@@ -153,6 +153,7 @@ class AuthController extends Controller
         }
 
         Auth::login( $user );
+        LogController::debug('Login', ['via' => $lmth]);
 
         return redirect()->route('home');
     }
@@ -180,6 +181,8 @@ class AuthController extends Controller
             'username' => $validated['username'],
             'complete_name' => $validated['complete_name']
         ]);
+        LogController::debug('New user registered', ['as' => $user]);
+
 
         // If already a login method exists, update id
         $find = LoginMethod::withTrashed()
@@ -195,7 +198,7 @@ class AuthController extends Controller
             $find->name = 'Principale';
             $find->save();
         } else {
-            LoginMethod::create([
+            $find = LoginMethod::create([
                 'driver' => $validated['driver'],
                 'identifier' => $validated['identifier'],
                 'name' => 'Principale',
@@ -203,7 +206,7 @@ class AuthController extends Controller
             ]);
         }
 
-
+        LogController::debug('New login method registered', ['Method' => $find]);
         Auth::login($user);
 
         return redirect()->route('home');

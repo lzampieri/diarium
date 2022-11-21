@@ -4,7 +4,7 @@ export default function LoadingBackdrop({ open, text = "Caricamento..." }) {
     if (!open) return "";
 
     return (
-        <Backdrop open={true} sx={{ zIndex: 1000 }}>
+        <Backdrop open={true} sx={{ zIndex: 1800 }}>
             <CircularProgress color="inherit" />
         </Backdrop>
     )

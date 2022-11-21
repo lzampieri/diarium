@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
 use Tabuna\Breadcrumbs\Breadcrumbs;
 use Inertia\Middleware;
 
@@ -47,6 +48,12 @@ class HandleInertiaRequests extends Middleware
         if (session()->has('snackbars')) {
             $data = array_merge($data, ['snackbars' => session('snackbars')]);
         }
+        
+        if( Auth::check() ) {
+            $user = Auth::user()->load('workspaces');
+            $data = array_merge($data, ['user' => $user]);
+
+        }
 
         $data = array_merge($data, ['breadcrumbs' => $this->generateBreadcrumbs($request)]);
 
@@ -63,7 +70,7 @@ class HandleInertiaRequests extends Middleware
             return [];
         }
 
-        $breadcrumbs = Breadcrumbs::generate($route->getName(), ...$route->parameters());
+        $breadcrumbs = Breadcrumbs::generate($route->getName(), $route->parameters());
 
         $collector = [];
 

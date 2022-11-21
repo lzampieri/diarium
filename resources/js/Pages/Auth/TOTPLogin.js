@@ -2,7 +2,7 @@ import { useForm } from '@inertiajs/inertia-react';
 import { Stack, TextField } from '@mui/material';
 import { enqueueSnackbar } from 'notistack';
 import Button from '../../Components/Button';
-import LoadingBackdrop from '../../GeneralComponents/LoadingBackdrop';
+import LoadingBackdrop from '../../Components/LoadingBackdrop';
 import SettingsLayout from '../../Layout/SettingsLayout';
 
 export default function TOTPLogin() {

@@ -2,9 +2,9 @@ import { Inertia } from "@inertiajs/inertia";
 import { useForm } from "@inertiajs/inertia-react";
 import { enqueueSnackbar } from "notistack";
 import { useState } from "react";
-import List from "../../../GeneralComponents/List";
-import ListItem from "../../../GeneralComponents/ListItem";
-import LoadingBackdrop from "../../../GeneralComponents/LoadingBackdrop";
+import List from "../../../Components/List";
+import ListItem from "../../../Components/ListItem";
+import LoadingBackdrop from "../../../Components/LoadingBackdrop";
 import KeyIcon from '@mui/icons-material/Key';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -71,7 +71,6 @@ export default function LoginMethods({ user, methods }) {
         post(route('user.renameLoginMethods'), {
             onSuccess: () => {
                 setEditMode(false)
-                enqueueSnackbar("Salvataggio effettuato", { variant: 'success' })
             }
         })
     }

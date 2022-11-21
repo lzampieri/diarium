@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LoginMethod;
 use App\Models\User;
+use App\Models\Workspace;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
@@ -27,6 +28,10 @@ class LogController extends Controller
 
         if ($value instanceof User) {
             return $value->username;
+        }
+
+        if ($value instanceof Workspace) {
+            return $value->name . " (" . $value->user->username . ")";
         }
 
         return var_export($value, true);

@@ -1,7 +1,7 @@
 import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { enqueueSnackbar, SnackbarProvider } from 'notistack';
 import { useEffect } from 'react';
-import GeneralModal from '../GeneralComponents/GeneralModal';
+import GeneralModal from '../LayoutComponents/GeneralModal';
 import theme from '../theme';
 
 export default function MainWrapper(page) {

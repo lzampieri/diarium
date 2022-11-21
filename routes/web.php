@@ -16,17 +16,26 @@ use Tabuna\Breadcrumbs\Trail;
 |
 */
 
-Route::middleware('auth')->group( function () {
+Route::middleware('auth')->group(function () {
 
-    include( 'logged.php' );
+    Route::get('/', function () {
+        return Inertia::render('Home');
+    })->name('home')
+        ->breadcrumbs(function (Trail $trail) {
+            $trail->push('Home', route('home'));
+        });
 
+    include('userManagement.php');
+    include('navigation.php');
 });
 
 Route::get('/unlogged', function () {
-    return Inertia::render( 'Auth/Unlogged' );
+    return Inertia::render('Auth/Unlogged');
 })->name('unlogged')
-  ->breadcrumbs( function (Trail $trail) { $trail->push('Accesso', route('unlogged') ); } );
+    ->breadcrumbs(function (Trail $trail) {
+        $trail->push('Accesso', route('unlogged'));
+    });
 
-include( 'auth.php' );
+include('auth.php');
 
 Route::get('/logs', [LogViewerController::class, 'index']);

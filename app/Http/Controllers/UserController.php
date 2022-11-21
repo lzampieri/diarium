@@ -45,12 +45,22 @@ class UserController extends Controller
 
         $validated = $request->validate($expected_content);
 
+        $count = 0;
         foreach ($loginMethods as $lm) {
-            $lm->name = $validated['lm_' . $lm->id];
-            $lm->save();
+            $old_name = $lm->name;
+            if( $old_name != $validated['lm_' . $lm->id] ) {
+                $lm->name = $validated['lm_' . $lm->id];
+                $lm->save();
+                $count += 1;
+                LogController::debug('Login method renamed', ['Method' => $lm]);
+            }
         }
 
-        return redirect()->route('user.profile');
+        if( $count > 0 )
+            return redirect()->route('user.profile')
+                ->with('snackbars',[['info',$count . ' metodi salvati.']]);
+        else
+            return redirect()->route('user.profile');
     }
 
     public static function deleteLoginMethod(Request $request)
@@ -71,6 +81,7 @@ class UserController extends Controller
             return redirect()->back()->withErrors(new MessageBag(["deleting" => "Impossibile rimanere senza credenziali"]));
         }
 
+        LogController::debug('Login method deleted', ['Method' => $loginMethod]);
         $loginMethod->delete();
 
         return redirect()->route('user.profile');

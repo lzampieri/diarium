@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Tabuna\Breadcrumbs\Trail;
 
-Route::get('/', function () {
-    return Inertia::render( 'Home', [ 'user' => Auth::user() ] );
-})->name('home')
-  ->breadcrumbs( function (Trail $trail) { $trail->push('Home', route('home') ); } );
-
 // User management
 Route::get('/user/profile', [UserController::class, 'userProfile'])
     ->name('user.profile')

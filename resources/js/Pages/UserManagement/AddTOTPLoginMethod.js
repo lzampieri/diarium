@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from '@inertiajs/inertia-react';
 import { enqueueSnackbar } from 'notistack';
 import theme from '../../theme';
-import LoadingBackdrop from '../../GeneralComponents/LoadingBackdrop';
+import LoadingBackdrop from '../../Components/LoadingBackdrop';
 import SettingsLayout from '../../Layout/SettingsLayout';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Alert, Box, IconButton, InputAdornment, Stack, TextField } from '@mui/material';
@@ -17,9 +17,7 @@ export default function AddTOTPLoginMethod(props) {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        post(route('user.saveTOTP'), {
-            onSuccess: () => enqueueSnackbar('Credenziali inserite con successo', { variant: 'success' })
-        })
+        post(route('user.saveTOTP'))
     }
 
     const copyText = () => {

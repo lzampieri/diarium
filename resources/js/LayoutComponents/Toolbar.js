@@ -12,7 +12,7 @@ export default function Toolbar(props) {
         <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ flexGrow: 1, px: 2 }}>
             <div>Diarium</div>
             <BreadCrumbs />
-            <Button variant="text" color="text" ref={ menuRef } onClick={ () => setMenuOpen( true )}>
+            <Button variant="text" color="text" ref={ menuRef } onClick={ () => setMenuOpen( true ) }>
                 {props.user.complete_name}
                 <AccountCircleIcon sx={{ ml: 1 }} />
             </Button>

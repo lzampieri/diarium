@@ -17,4 +17,8 @@ class User extends Authenticatable
     public function loginMethods() {
         return $this->hasMany( LoginMethod::class );
     }
+
+    public function workspaces() {
+        return $this->hasMany( Workspace::class );
+    }
 }

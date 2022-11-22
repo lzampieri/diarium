@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
 
     include('userManagement.php');
     include('navigation.php');
+    include('adminPowers.php');
 });
 
 Route::get('/unlogged', function () {

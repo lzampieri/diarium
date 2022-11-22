@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material";
-import BreadCrumbs from "../GeneralComponents/BreadCrumbs";
+import BreadCrumbs from "../LayoutComponents/BreadCrumbs";
 
 export default function SettingsLayout({ children }) {
 

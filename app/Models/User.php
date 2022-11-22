@@ -12,6 +12,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'complete_name'
+        // is_admin is not fillable
     ];
 
     public function loginMethods() {

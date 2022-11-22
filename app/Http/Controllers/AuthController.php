@@ -53,19 +53,19 @@ class AuthController extends Controller
         if (Auth::check()) {
 
             // If the login method exists but is trashed, restore
-            $loginMethodTrashed = LoginMethod::withTrashed()
+            $loginMethod = LoginMethod::withTrashed()
                 ->where('driver', $driver)
                 ->where('identifier', $identifier)
                 ->first();
-            if ($loginMethodTrashed) {
-                $loginMethodTrashed->restore();
-                $loginMethodTrashed->user_id = Auth::user()->id;
-                $loginMethodTrashed->save();
+            if ($loginMethod) {
+                $loginMethod->restore();
+                $loginMethod->user_id = Auth::user()->id;
+                $loginMethod->save();
             }
 
             // Else, create new
             else {
-                LoginMethod::create([
+                $loginMethod = LoginMethod::create([
                     'driver' => $driver,
                     'identifier' => $identifier,
                     'name' => 'Secondario',

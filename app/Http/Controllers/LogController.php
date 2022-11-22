@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LoginMethod;
+use App\Models\Section;
 use App\Models\User;
 use App\Models\Workspace;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,10 @@ class LogController extends Controller
             return $value->name . " (" . $value->user->username . ")";
         }
 
+        if ($value instanceof Section) {
+            return $value->name . " in " . $value->workspace->name . " (" . $value->workspace->user->username . ")";
+        }
+
         return var_export($value, true);
     }
 
@@ -41,7 +46,7 @@ class LogController extends Controller
     {
         if (!empty($params)) {
             foreach ($params as $key => $value) {
-                $message .= $key . ': ' . LogController::dumpValue($value);
+                $message .= " " . $key . ': ' . LogController::dumpValue($value);
             }
         }
         Log::channel('internal')->debug($message);

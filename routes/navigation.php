@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\WorkspaceController;
 use App\Models\Workspace;
 use Illuminate\Support\Facades\Route;
@@ -13,3 +14,12 @@ Route::get('/w/{ws}', [WorkspaceController::class, 'viewWorkspace'])
 
 Route::post('/w/add', [WorkspaceController::class, 'addWorkspace'])
     ->name('workspace.add');
+Route::post('/w/rename', [WorkspaceController::class, 'renameWorkspace'])
+    ->name('workspace.rename');
+Route::post('/w/delete', [WorkspaceController::class, 'deleteWorkspace'])
+    ->name('workspace.delete');
+
+// Sections
+Route::post('/w/{ws}/add', [SectionController::class, 'addSection'])
+    ->where('ws', '[0-9]+')
+    ->name('section.add');

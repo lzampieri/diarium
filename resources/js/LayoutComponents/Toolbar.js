@@ -1,4 +1,5 @@
 import { AppBar, Button, Menu, MenuItem, Stack } from '@mui/material';
+// Must use original button for ref purposes
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import BreadCrumbs from './BreadCrumbs';
 import { useRef, useState } from 'react';

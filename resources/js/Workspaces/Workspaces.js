@@ -1,9 +1,11 @@
-import { Box, Stack, ListItemButton } from "@mui/material";
+import { Box, Stack, ListItemButton, IconButton } from "@mui/material";
 import { Link, usePage } from '@inertiajs/inertia-react';
-import Button from "../Components/Button";
 import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
 import AddWorkspaceDialog from "./AddWorkspaceDialog";
 import ListItem from "../Components/ListItem";
+import SelectedWorkspacePanel from "./SelectedWorkspacePanel";
+import { Fragment } from "react";
 
 export default function Workspaces(props) {
     const selected_workspace = usePage().props.workspace || -1;
@@ -25,18 +27,20 @@ export default function Workspaces(props) {
     const selectedProps = (id) => {
         return {
             selected: true,
-            sx: { flexGrow: 1, ...common_sx(id) }
+            sx: { flexGrow: 0, ...common_sx(id) }
         }
     }
 
     return <Stack height={1} justifyContent="stretch">
         {workspaces_list.map((w) =>
-            <ListItemButton
-                key={w.id}
-                {...(selected_workspace == w.id ? selectedProps(w.id) : linkProps(w.id))}
-            >
-                {w.name}
-            </ListItemButton>
+            <Fragment key={w.id}>
+                <ListItemButton
+                    {...(selected_workspace == w.id ? selectedProps(w.id) : linkProps(w.id))}
+                >
+                    {w.name}
+                </ListItemButton>
+                {selected_workspace == w.id && <SelectedWorkspacePanel ws={w}/>}
+            </Fragment>
         )}
         <AddWorkspaceDialog />
     </Stack>;

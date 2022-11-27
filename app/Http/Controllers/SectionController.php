@@ -19,50 +19,55 @@ class SectionController extends Controller
     public static function addSection(Request $request, Workspace $ws)
     {
         $validated = $request->validate([
-            'name' => 'required|min:3'
+            'name' => 'required|min:3',
+            'color' => 'required|min:7|max:7'
         ]);
 
         $sc = Section::create([
             'name' => $validated['name'],
             'workspace_id' => $ws->id,
+            'color' => $validated['color']
         ]);
 
         LogController::debug('New section created', ['Section' => $sc]);
 
-        return redirect()->route('workspace', ['ws' => $ws])->with('snackbars', [['success', 'Sezione creata ed attivata']]);//todo
+        return redirect()->route('workspace', ['ws' => $ws])->with('snackbars', [['success', 'Sezione creata ed attivata']]); //todo
     }
 
-    // public static function renameWorkspace(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'id' => 'required|exists:workspaces,id',
-    //         'name' => 'required|min:3'
-    //     ]);
+    public static function editSection(Request $request)
+    {
+        $validated = $request->validate([
+            'id' => 'required|exists:sections,id',
+            'name' => 'required|min:3',
+            'color' => 'required|min:7|max:7'
+        ]);
 
-    //     $ws = Workspace::find($validated['id']);
+        $sc = Section::find($validated['id']);
 
-    //     if ($ws->user_id != Auth::user()->id)
-    //         return redirect()->back()->with('snackbars', [['error', 'Impossibile rinominare spazi di lavoro altrui.']]);
+        if ($sc->workspace->user_id != Auth::user()->id)
+            return redirect()->back()->with('snackbars', [['error', 'Impossibile modificare sezioni altrui.']]);
 
-    //     $ws->name = $validated['name'];
-    //     $ws->save();
-    //     LogController::debug('Workspace renamed', ['Workspace' => $ws]);
-    //     return redirect()->route('workspace', ['ws' => $ws])->with('snackbars', [['success', 'Spazio di lavoro rinominato.']]);
-    // }
+        $sc->name = $validated['name'];
+        $sc->color = $validated['color'];
+        $sc->save();
+        LogController::debug('Section edited', ['Section' => $sc]);
+        return redirect()->back()->with('snackbars', [['success', 'Sezione modificata.']]);
+    }
 
-    // public static function deleteWorkspace(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'id' => 'required|exists:workspaces,id'
-    //     ]);
+    public static function deleteSection(Request $request)
+    {
+        $validated = $request->validate([
+            'id' => 'required|exists:sections,id'
+        ]);
 
-    //     $ws = Workspace::find($validated['id']);
+        $sc = Section::find($validated['id']);
+        $ws_id = $sc->workspace->id;
 
-    //     if ($ws->user_id != Auth::user()->id)
-    //         return redirect()->back()->with('snackbars', [['error', 'Impossibile cancellare spazi di lavoro altrui.']]);
+        if ($sc->workspace->user_id != Auth::user()->id)
+            return redirect()->back()->with('snackbars', [['error', 'Impossibile cancellare sezioni altrui.']]);
 
-    //     LogController::debug('Workspace deleted', ['Workspace' => $ws]);
-    //     $ws->delete();
-    //     return redirect()->route('home')->with('snackbars', [['success', 'Spazio di lavoro cancellato.']]);
-    // }
+        LogController::debug('Section deleted', ['Section' => $sc]);
+        $sc->delete();
+        return redirect()->route('workspace', ['ws' => $ws_id])->with('snackbars', [['success', 'Sezione cancellata.']]);
+    }
 }

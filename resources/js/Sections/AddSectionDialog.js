@@ -1,15 +1,17 @@
 import { useForm } from "@inertiajs/inertia-react";
-import { Stack, Dialog, DialogContent, DialogTitle, TextField, IconButton } from "@mui/material";
+import { ButtonBase, Stack, Dialog, DialogContent, DialogTitle, TextField, IconButton } from "@mui/material";
 import { useState } from "react";
 import Button from "../Components/Button";
 import AddIcon from '@mui/icons-material/Add';
 import LoadingBackdrop from "../Components/LoadingBackdrop";
-
+import Colors from "./Colors";
+import ColorSelectButton from "../Components/ColorSelectButton";
 
 export default function AddSectionDialog({ ws }) {
     const [open, setOpen] = useState(false);
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: ''
+        name: '',
+        color: Colors[ ws.sections.length % Colors.length ]
     })
 
     const onSubmit = (e) => {
@@ -36,6 +38,11 @@ export default function AddSectionDialog({ ws }) {
                             onChange={e => setData('name', e.target.value)}
                             error={!!errors.name}
                             helperText={errors.name} />
+                        <Stack direction='row' spacing={2}>
+                            { Colors.map( c =>
+                                <ColorSelectButton color={c} key={c} active={ data.color == c } onClick={ () => setData( 'color', c ) } />
+                            )}
+                        </Stack>
                         <Button type="submit"><AddIcon /> Aggiungi</Button>
                     </Stack>
                 </DialogContent>

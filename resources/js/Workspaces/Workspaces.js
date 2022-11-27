@@ -1,14 +1,12 @@
 import { Box, Stack, ListItemButton, IconButton } from "@mui/material";
 import { Link, usePage } from '@inertiajs/inertia-react';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
 import AddWorkspaceDialog from "./AddWorkspaceDialog";
-import ListItem from "../Components/ListItem";
 import SelectedWorkspacePanel from "./SelectedWorkspacePanel";
 import { Fragment } from "react";
 
 export default function Workspaces(props) {
-    const selected_workspace = usePage().props.workspace || -1;
+    
+    const selected_workspace_id = usePage().props.workspace ? usePage().props.workspace.id : -1;
     const workspaces_list = usePage().props.user.workspaces;
 
     const common_sx = (id) => {
@@ -35,11 +33,11 @@ export default function Workspaces(props) {
         {workspaces_list.map((w) =>
             <Fragment key={w.id}>
                 <ListItemButton
-                    {...(selected_workspace == w.id ? selectedProps(w.id) : linkProps(w.id))}
+                    {...(selected_workspace_id == w.id ? selectedProps(w.id) : linkProps(w.id))}
                 >
                     {w.name}
                 </ListItemButton>
-                {selected_workspace == w.id && <SelectedWorkspacePanel ws={w}/>}
+                {selected_workspace_id == w.id && <SelectedWorkspacePanel ws={usePage().props.workspace}/>}
             </Fragment>
         )}
         <AddWorkspaceDialog />

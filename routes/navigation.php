@@ -23,3 +23,7 @@ Route::post('/w/delete', [WorkspaceController::class, 'deleteWorkspace'])
 Route::post('/w/{ws}/add', [SectionController::class, 'addSection'])
     ->where('ws', '[0-9]+')
     ->name('section.add');
+Route::post('/s/edit', [SectionController::class, 'editSection'])
+    ->name('section.edit');
+Route::post('/s/delete', [SectionController::class, 'deleteSection'])
+    ->name('section.delete');

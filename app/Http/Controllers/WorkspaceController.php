@@ -12,7 +12,7 @@ class WorkspaceController extends Controller
     // Workspace
     public static function viewWorkspace(Request $request, Workspace $ws)
     {
-        return Inertia::render('Home', ['workspace' => $ws->id]);
+        return Inertia::render('Home', ['workspace' => $ws->load('sections')]);
     }
 
     public static function addWorkspace(Request $request)

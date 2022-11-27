@@ -14,8 +14,9 @@ export default function RenameWorkspaceDialog({ ws }) {
         name: ws.name
     })
 
-    const submit = () => {
-        post(route('workspace.rename'), {onSuccess: () => { reset(), setOpen( false ) }})
+    const submit = (e) => {
+        if( e ) e.preventDefault();
+        post(route('workspace.rename'), {onSuccess: () => { setOpen( false ) }})
     }
 
     return (

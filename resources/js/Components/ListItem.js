@@ -6,7 +6,7 @@ export default function ListItem(props) {
         <MuiListItem disablePadding {...props}
         >
             {props.icon &&
-                <ListItemAvatar><Avatar sx={{ bgcolor: "grey" }}>{props.icon}</Avatar></ListItemAvatar>}
+                <ListItemAvatar><Avatar sx={{ bgcolor: "primary.superlight" }}>{props.icon}</Avatar></ListItemAvatar>}
             {props.primary &&
                 <ListItemText primary={ props.primary } secondary={ props.secondary } />}
             {props.children}

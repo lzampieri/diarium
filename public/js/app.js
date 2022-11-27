@@ -30761,7 +30761,7 @@ function ListItem(props) {
     children: [props.icon && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
         sx: {
-          bgcolor: "grey"
+          bgcolor: "primary.superlight"
         },
         children: props.icon
       })
@@ -31265,7 +31265,6 @@ function AdminLinkCollections() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
       children: "Amministrazione"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(_Components_Button__WEBPACK_IMPORTED_MODULE_0__["default"], {
-      color: "inherit",
       to: route('admin.log'),
       component: "a",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_icons_material_Newspaper__WEBPACK_IMPORTED_MODULE_3__["default"], {}), " Log"]
@@ -32369,7 +32368,7 @@ function SectionsList(props) {
     justifyItems: "stretch",
     sx: {
       flexGrow: 1,
-      bgcolor: 'grey'
+      bgcolor: 'primary.superlight'
     },
     children: props.ws.sections.map(function (s) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(_mui_material_Box__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -32417,39 +32416,39 @@ __webpack_require__.r(__webpack_exports__);
 
 var allBorders = {
   border: 1,
-  borderColor: (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey)
+  borderColor: (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.primary.superlight)
 };
 var rightBorders = {
   border: 1,
-  borderImage: "linear-gradient(to right, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0) ) 1 1"
+  borderImage: "linear-gradient(to right, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.primary.superlight) + ", rgba(0, 0, 0, 0) ) 1 1"
 };
 var leftBorders = {
   border: 1,
-  borderImage: "linear-gradient(to left, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0) ) 1 1"
+  borderImage: "linear-gradient(to left, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.primary.superlight) + ", rgba(0, 0, 0, 0) ) 1 1"
 };
 var topBorders = {
   border: 1,
-  borderImage: "linear-gradient(to top, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0) ) 1 1"
+  borderImage: "linear-gradient(to top, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.primary.superlight) + ", rgba(0, 0, 0, 0) ) 1 1"
 };
 var bottomBorders = {
   border: 1,
-  borderImage: "linear-gradient(to bottom, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0) ) 1 1"
+  borderImage: "linear-gradient(to bottom, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.primary.superlight) + ", rgba(0, 0, 0, 0) ) 1 1"
 };
 var topLeftBorders = {
   border: 1,
-  borderImage: "linear-gradient(to top left, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
+  borderImage: "linear-gradient(to top left, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.primary.superlight) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
 };
 var topRightBorders = {
   border: 1,
-  borderImage: "linear-gradient(to top right, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
+  borderImage: "linear-gradient(to top right, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.primary.superlight) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
 };
 var bottomLeftBorders = {
   border: 1,
-  borderImage: "linear-gradient(to bottom left, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
+  borderImage: "linear-gradient(to bottom left, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.primary.superlight) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
 };
 var bottomRightBorders = {
   border: 1,
-  borderImage: "linear-gradient(to bottom right, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
+  borderImage: "linear-gradient(to bottom right, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.primary.superlight) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
 };
 var spacingLeft = {
   pl: 2,
@@ -32479,13 +32478,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Think)
 /* harmony export */ });
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/styles/useTheme.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
-/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../theme */ "./resources/js/theme.js");
-/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_theme__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _BordersProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BordersProps */ "./resources/js/Thinks/BordersProps.js");
-/* harmony import */ var _Sections_Colors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Sections/Colors */ "./resources/js/Sections/Colors.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/styles/useTheme.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
+/* harmony import */ var _BordersProps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BordersProps */ "./resources/js/Thinks/BordersProps.js");
+/* harmony import */ var _Sections_Colors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Sections/Colors */ "./resources/js/Sections/Colors.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -32498,30 +32495,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 function Think(_ref) {
   var id = _ref.id;
-  var getTextColor = (0,_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"])().palette.getContrastText;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_1__.spacingLeft), _BordersProps__WEBPACK_IMPORTED_MODULE_1__.leftBorders),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  var getTextColor = (0,_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"])().palette.getContrastText;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingLeft), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.leftBorders),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
         sx: {
-          bgcolor: _Sections_Colors__WEBPACK_IMPORTED_MODULE_2__["default"][id],
+          bgcolor: _Sections_Colors__WEBPACK_IMPORTED_MODULE_1__["default"][id],
           borderRadius: 4,
           py: 2,
-          color: getTextColor(_Sections_Colors__WEBPACK_IMPORTED_MODULE_2__["default"][id]),
+          color: getTextColor(_Sections_Colors__WEBPACK_IMPORTED_MODULE_1__["default"][id]),
           fontSize: 'caption',
           writingMode: 'vertical-lr',
           transform: 'rotate(-180deg)'
         },
         children: "Data e ora"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_1__.spacingCenter), _BordersProps__WEBPACK_IMPORTED_MODULE_1__.allBorders),
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingCenter), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.allBorders),
       children: "Prova"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_1__.spacingRight), _BordersProps__WEBPACK_IMPORTED_MODULE_1__.rightBorders),
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingRight), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.rightBorders),
       children: "Prova"
     })]
   });
@@ -32582,9 +32578,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ThinksHeader)
 /* harmony export */ });
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
+/* harmony import */ var _mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/icons-material/Add */ "./node_modules/@mui/icons-material/Add.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/styles/useTheme.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Button/Button.js");
 /* harmony import */ var _BordersProps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BordersProps */ "./resources/js/Thinks/BordersProps.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../theme */ "./resources/js/theme.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_theme__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -32596,17 +32597,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
 function ThinksHeader(_ref) {
   var id = _ref.id;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  console.log((0,_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"])().palette.action.hoverOpacity);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
       sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingLeft), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topLeftBorders)
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingCenter), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topBorders),
-      children: "Prova"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingRight), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topRightBorders),
-      children: "Prova"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      sx: _objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topBorders),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        sx: {
+          width: "100%",
+          justifyContent: "flex-end",
+          px: 1,
+          py: 0.5
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingRight), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topRightBorders)
     })]
   });
 }
@@ -33241,8 +33252,10 @@ module.exports = {
     halfblack: '#000000aa',
     black: '#000000',
     white: '#ffffff',
-    grey: '#d3d3d3',
-    bordersGrey: '#d3d3d3',
+    primary: {
+      main: '#2A2A2A',
+      superlight: '#d3d3d3'
+    },
     red: '#ED4337',
     text: {
       main: '#000000'

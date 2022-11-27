@@ -5,8 +5,7 @@ module.exports = {
         halfblack: '#000000aa',
         black: '#000000',
         white: '#ffffff',
-        grey: '#d3d3d3',
-        bordersGrey: '#d3d3d3',
+        primary: { main: '#2A2A2A', superlight: '#d3d3d3' },
         red: '#ED4337',
         text: { main: '#000000' }
     },

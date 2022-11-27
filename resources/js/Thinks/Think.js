@@ -1,5 +1,4 @@
 import { Box, Chip, useTheme } from "@mui/material";
-import theme from "../theme";
 import { allBorders, leftBorders, rightBorders, spacingCenter, spacingLeft, spacingRight } from "./BordersProps";
 import Colors from "../Sections/Colors";
 

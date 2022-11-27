@@ -32124,7 +32124,7 @@ function DeleteSectionDialog(_ref) {
   var ws = _ref.ws,
       sc = _ref.sc;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       open = _useState2[0],
       setOpen = _useState2[1];
@@ -32245,7 +32245,7 @@ function EditSectionDialog(_ref) {
   var ws = _ref.ws,
       sc = _ref.sc;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       open = _useState2[0],
       setOpen = _useState2[1];

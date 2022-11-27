@@ -10,7 +10,7 @@ import UndoIcon from '@mui/icons-material/Undo';
 import DeleteSectionDialog from "./DeleteSectionDialog";
 
 export default function EditSectionDialog({ ws, sc }) {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const { data, setData, post, processing, errors, reset } = useForm({
         id: sc.id,
         name: sc.name,

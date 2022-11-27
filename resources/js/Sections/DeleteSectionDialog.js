@@ -7,7 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import LoadingBackdrop from "../Components/LoadingBackdrop";
 
 export default function DeleteSectionDialog({ ws, sc }) {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const { post, processing } = useForm({
         id: sc.id
     })

@@ -31084,12 +31084,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ MainLayout)
 /* harmony export */ });
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Stack/Stack.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Paper/Paper.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Stack/Stack.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Paper/Paper.js");
 /* harmony import */ var _LayoutComponents_BreadCrumbs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../LayoutComponents/BreadCrumbs */ "./resources/js/LayoutComponents/BreadCrumbs.js");
 /* harmony import */ var _LayoutComponents_Toolbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../LayoutComponents/Toolbar */ "./resources/js/LayoutComponents/Toolbar.js");
-/* harmony import */ var _Workspaces_Workspaces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Workspaces/Workspaces */ "./resources/js/Workspaces/Workspaces.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Thinks_ThinksList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Thinks/ThinksList */ "./resources/js/Thinks/ThinksList.js");
+/* harmony import */ var _Workspaces_Workspaces__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Workspaces/Workspaces */ "./resources/js/Workspaces/Workspaces.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -31098,30 +31100,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function MainLayout(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_LayoutComponents_Toolbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_LayoutComponents_Toolbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
       user: props.user
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
       direction: "row",
       width: 1,
       sx: {
         minHeight: '90vh'
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
         elevation: 0,
         sx: {
           width: 0.2
         },
         square: true,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Workspaces_Workspaces__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Workspaces_Workspaces__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
         elevation: 8,
         sx: {
           flexGrow: 1
         },
         square: true,
-        children: "Central content"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Thinks_ThinksList__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
         elevation: 8,
         sx: {
           width: 0.2
@@ -32388,6 +32390,271 @@ function SectionsList(props) {
 
 /***/ }),
 
+/***/ "./resources/js/Thinks/BordersProps.js":
+/*!*********************************************!*\
+  !*** ./resources/js/Thinks/BordersProps.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "allBorders": () => (/* binding */ allBorders),
+/* harmony export */   "bottomBorders": () => (/* binding */ bottomBorders),
+/* harmony export */   "bottomLeftBorders": () => (/* binding */ bottomLeftBorders),
+/* harmony export */   "bottomRightBorders": () => (/* binding */ bottomRightBorders),
+/* harmony export */   "leftBorders": () => (/* binding */ leftBorders),
+/* harmony export */   "rightBorders": () => (/* binding */ rightBorders),
+/* harmony export */   "spacingCenter": () => (/* binding */ spacingCenter),
+/* harmony export */   "spacingLeft": () => (/* binding */ spacingLeft),
+/* harmony export */   "spacingRight": () => (/* binding */ spacingRight),
+/* harmony export */   "topBorders": () => (/* binding */ topBorders),
+/* harmony export */   "topLeftBorders": () => (/* binding */ topLeftBorders),
+/* harmony export */   "topRightBorders": () => (/* binding */ topRightBorders)
+/* harmony export */ });
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../theme */ "./resources/js/theme.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_theme__WEBPACK_IMPORTED_MODULE_0__);
+
+var allBorders = {
+  border: 1,
+  borderColor: (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey)
+};
+var rightBorders = {
+  border: 1,
+  borderImage: "linear-gradient(to right, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0) ) 1 1"
+};
+var leftBorders = {
+  border: 1,
+  borderImage: "linear-gradient(to left, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0) ) 1 1"
+};
+var topBorders = {
+  border: 1,
+  borderImage: "linear-gradient(to top, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0) ) 1 1"
+};
+var bottomBorders = {
+  border: 1,
+  borderImage: "linear-gradient(to bottom, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0) ) 1 1"
+};
+var topLeftBorders = {
+  border: 1,
+  borderImage: "linear-gradient(to top left, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
+};
+var topRightBorders = {
+  border: 1,
+  borderImage: "linear-gradient(to top right, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
+};
+var bottomLeftBorders = {
+  border: 1,
+  borderImage: "linear-gradient(to bottom left, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
+};
+var bottomRightBorders = {
+  border: 1,
+  borderImage: "linear-gradient(to bottom right, " + (_theme__WEBPACK_IMPORTED_MODULE_0___default().palette.bordersGrey) + ", rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ) 1 1"
+};
+var spacingLeft = {
+  pl: 2,
+  py: 1,
+  pr: 0.5
+};
+var spacingCenter = {
+  py: 4,
+  px: 2
+};
+var spacingRight = {
+  pr: 2,
+  py: 1,
+  pl: 0.5
+};
+
+/***/ }),
+
+/***/ "./resources/js/Thinks/Think.js":
+/*!**************************************!*\
+  !*** ./resources/js/Thinks/Think.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Think)
+/* harmony export */ });
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/styles/useTheme.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../theme */ "./resources/js/theme.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_theme__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _BordersProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BordersProps */ "./resources/js/Thinks/BordersProps.js");
+/* harmony import */ var _Sections_Colors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Sections/Colors */ "./resources/js/Sections/Colors.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+function Think(_ref) {
+  var id = _ref.id;
+  var getTextColor = (0,_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"])().palette.getContrastText;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_1__.spacingLeft), _BordersProps__WEBPACK_IMPORTED_MODULE_1__.leftBorders),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        sx: {
+          bgcolor: _Sections_Colors__WEBPACK_IMPORTED_MODULE_2__["default"][id],
+          borderRadius: 4,
+          py: 2,
+          color: getTextColor(_Sections_Colors__WEBPACK_IMPORTED_MODULE_2__["default"][id]),
+          fontSize: 'caption',
+          writingMode: 'vertical-lr',
+          transform: 'rotate(-180deg)'
+        },
+        children: "Data e ora"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_1__.spacingCenter), _BordersProps__WEBPACK_IMPORTED_MODULE_1__.allBorders),
+      children: "Prova"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_1__.spacingRight), _BordersProps__WEBPACK_IMPORTED_MODULE_1__.rightBorders),
+      children: "Prova"
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Thinks/ThinksFooter.js":
+/*!*********************************************!*\
+  !*** ./resources/js/Thinks/ThinksFooter.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ThinksFooter)
+/* harmony export */ });
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
+/* harmony import */ var _BordersProps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BordersProps */ "./resources/js/Thinks/BordersProps.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+function ThinksFooter(_ref) {
+  var id = _ref.id;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingLeft), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.bottomLeftBorders)
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingCenter), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.bottomBorders),
+      children: "Prova"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingRight), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.bottomRightBorders),
+      children: "Prova"
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Thinks/ThinksHeader.js":
+/*!*********************************************!*\
+  !*** ./resources/js/Thinks/ThinksHeader.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ThinksHeader)
+/* harmony export */ });
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
+/* harmony import */ var _BordersProps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BordersProps */ "./resources/js/Thinks/BordersProps.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+function ThinksHeader(_ref) {
+  var id = _ref.id;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingLeft), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topLeftBorders)
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingCenter), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topBorders),
+      children: "Prova"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingRight), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topRightBorders),
+      children: "Prova"
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Thinks/ThinksList.js":
+/*!*******************************************!*\
+  !*** ./resources/js/Thinks/ThinksList.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ThinksList)
+/* harmony export */ });
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
+/* harmony import */ var _Sections_Colors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Sections/Colors */ "./resources/js/Sections/Colors.js");
+/* harmony import */ var _Think__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Think */ "./resources/js/Thinks/Think.js");
+/* harmony import */ var _ThinksFooter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ThinksFooter */ "./resources/js/Thinks/ThinksFooter.js");
+/* harmony import */ var _ThinksHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThinksHeader */ "./resources/js/Thinks/ThinksHeader.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+function ThinksList(props) {
+  var thinks = [1, 2, 3, 4, 5];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    display: "grid",
+    gridTemplateColumns: "min-content auto min-content",
+    sx: {
+      m: 4
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ThinksHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {}, 'header'), thinks.map(function (i) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Think__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id: i
+      }, i);
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ThinksFooter__WEBPACK_IMPORTED_MODULE_2__["default"], {}, 'footer')]
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/Workspaces/AddWorkspaceDialog.js":
 /*!*******************************************************!*\
   !*** ./resources/js/Workspaces/AddWorkspaceDialog.js ***!
@@ -32975,6 +33242,7 @@ module.exports = {
     black: '#000000',
     white: '#ffffff',
     grey: '#d3d3d3',
+    bordersGrey: '#d3d3d3',
     red: '#ED4337',
     text: {
       main: '#000000'

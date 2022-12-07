@@ -29,7 +29,7 @@ export default function Workspaces(props) {
         }
     }
 
-    return <Stack height={1} justifyContent="stretch">
+    return <Stack justifyContent="stretch" sx={{ position: 'sticky', top: '10vh' }}>
         {workspaces_list.map((w) =>
             <Fragment key={w.id}>
                 <ListItemButton

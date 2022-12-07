@@ -32,20 +32,20 @@ Route::post('/s/delete', [SectionController::class, 'deleteSection'])
     ->name('section.delete');
 
 // Thinks
-Route::get('/w/{ws}/thinks', function(Workspace $ws) {
-    return $ws->load('thinks');
-});
-Route::get('/s/{sc}/thinks', function(Section $sc) {
-    return $sc->load('thinks'); 
-});
-Route::get('/w/{ws}/all_thinks', function(Workspace $ws) {
-    // DB::connection()->enableQueryLog();
-    $data = $ws->load('all_thinks_r');
-    // $queries = DB::getQueryLog();
-    // $data['log'] = end( $queries );
-    // $data['full_query'] =
-    //     Str::replaceArray('?',
-    //     $data['log']['bindings'],
-    //     $data['log']['query']);
-    return $data;
-});
+// Route::get('/w/{ws}/thinks', function(Workspace $ws) {
+//     return $ws->load('thinks');
+// });
+// Route::get('/s/{sc}/thinks', function(Section $sc) {
+//     return $sc->load('thinks'); 
+// });
+// Route::get('/w/{ws}/all_thinks', function(Workspace $ws) {
+//     // DB::connection()->enableQueryLog();
+//     $data = Workspace::all()->load('all_thinks_r');
+//     // $queries = DB::getQueryLog();
+//     // $data['log'] = end( $queries );
+//     // $data['full_query'] =
+//     //     Str::replaceArray('?',
+//     //     $data['log']['bindings'],
+//     //     $data['log']['query']);
+//     return $data;
+// });

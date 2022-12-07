@@ -19,4 +19,7 @@ class Section extends Model
         return $this->belongsTo( Workspace::class );
     }
 
+    public function thinks() {
+        return $this->morphMany( Think::class, 'thinkable' );
+    }
 }

@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\WorkspaceController;
+use App\Models\Section;
 use App\Models\Workspace;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
+use Illuminate\Support\Str;
 
 // Workspace
 Route::get('/w/{ws}', [WorkspaceController::class, 'viewWorkspace'])
@@ -27,3 +30,22 @@ Route::post('/s/edit', [SectionController::class, 'editSection'])
     ->name('section.edit');
 Route::post('/s/delete', [SectionController::class, 'deleteSection'])
     ->name('section.delete');
+
+// Thinks
+Route::get('/w/{ws}/thinks', function(Workspace $ws) {
+    return $ws->load('thinks');
+});
+Route::get('/s/{sc}/thinks', function(Section $sc) {
+    return $sc->load('thinks'); 
+});
+Route::get('/w/{ws}/all_thinks', function(Workspace $ws) {
+    // DB::connection()->enableQueryLog();
+    $data = $ws->load('all_thinks_r');
+    // $queries = DB::getQueryLog();
+    // $data['log'] = end( $queries );
+    // $data['full_query'] =
+    //     Str::replaceArray('?',
+    //     $data['log']['bindings'],
+    //     $data['log']['query']);
+    return $data;
+});

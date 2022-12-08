@@ -4,7 +4,6 @@ import { spacingLeft, spacingRight, topBorders, topLeftBorders, topRightBorders 
 import theme from "../theme";
 
 export default function ThinksHeader({ id }) {
-    console.log( useTheme().palette.action.hoverOpacity )
     return <>
         <Box sx={{ ...spacingLeft, ...topLeftBorders }}></Box>
         <Box sx={{ ...topBorders }}>

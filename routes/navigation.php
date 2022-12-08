@@ -4,10 +4,8 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\WorkspaceController;
 use App\Models\Section;
 use App\Models\Workspace;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
-use Illuminate\Support\Str;
 
 // Workspace
 Route::get('/w/{ws}', [WorkspaceController::class, 'viewWorkspace'])
@@ -23,6 +21,15 @@ Route::post('/w/delete', [WorkspaceController::class, 'deleteWorkspace'])
     ->name('workspace.delete');
 
 // Sections
+Route::get('/w/{ws}/{sc}', [SectionController::class, 'viewSection'])
+    ->where('ws', '[0-9]+')
+    ->where('sc', '[0-9]+')
+    ->name('section')
+    ->breadcrumbs( function (Trail $trail, Workspace $ws, Section $sc) {
+        $trail->parent('home')
+        ->push($ws->name, route('workspace', [ 'ws' => $ws->id ]) )
+        ->push($sc->name, route('section', [ 'ws' => $ws->id, 'sc' => $sc->id ]) ); } );
+
 Route::post('/w/{ws}/add', [SectionController::class, 'addSection'])
     ->where('ws', '[0-9]+')
     ->name('section.add');
@@ -38,14 +45,15 @@ Route::post('/s/delete', [SectionController::class, 'deleteSection'])
 // Route::get('/s/{sc}/thinks', function(Section $sc) {
 //     return $sc->load('thinks'); 
 // });
-// Route::get('/w/{ws}/all_thinks', function(Workspace $ws) {
-//     // DB::connection()->enableQueryLog();
-//     $data = Workspace::all()->load('all_thinks_r');
-//     // $queries = DB::getQueryLog();
-//     // $data['log'] = end( $queries );
-//     // $data['full_query'] =
-//     //     Str::replaceArray('?',
-//     //     $data['log']['bindings'],
-//     //     $data['log']['query']);
-//     return $data;
-// });
+Route::get('/w/{ws}/all_thinks', function(Workspace $ws) {
+    // DB::connection()->enableQueryLog();
+    $ws->load('thinks');
+    $ws['thinks']->load('thinkable');
+    // $queries = DB::getQueryLog();
+    // $data['log'] = end( $queries );
+    // $data['full_query'] =
+    //     Str::replaceArray('?',
+    //     $data['log']['bindings'],
+    //     $data['log']['query']);
+    return $ws;
+});

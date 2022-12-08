@@ -30863,6 +30863,7 @@ function getComponent(breadcrumb) {
 
 function BreadCrumbs() {
   var breadcrumbs = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.breadcrumbs;
+  console.log(breadcrumbs);
   if (!breadcrumbs || breadcrumbs.length == 0) return "";
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     elevation: 0,
@@ -32354,35 +32355,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SectionsList)
 /* harmony export */ });
-/* harmony import */ var _mui_material_Box__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material/Box */ "./node_modules/@mui/material/esm/Box/Box.js");
-/* harmony import */ var _mui_material_Stack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material/Stack */ "./node_modules/@mui/material/esm/Stack/Stack.js");
-/* harmony import */ var _EditSectionDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditSectionDialog */ "./resources/js/Sections/EditSectionDialog.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/ListItemButton/ListItemButton.js");
+/* harmony import */ var _mui_material_Stack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material/Stack */ "./node_modules/@mui/material/esm/Stack/Stack.js");
+/* harmony import */ var _EditSectionDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditSectionDialog */ "./resources/js/Sections/EditSectionDialog.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
+
+
+
+
+
+var common_sx = function common_sx(sc) {
+  return {
+    py: 1,
+    px: 2,
+    borderColor: sc.color
+  };
+};
+
+var linkProps = function linkProps(ws, sc) {
+  return {
+    component: _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link,
+    href: route('section', {
+      ws: ws.id,
+      sc: sc.id
+    }),
+    sx: _objectSpread({
+      borderLeft: 4
+    }, common_sx(sc))
+  };
+};
+
+var selectedProps = function selectedProps(sc) {
+  return {
+    selected: true,
+    sx: _objectSpread({
+      borderLeft: 8
+    }, common_sx(sc))
+  };
+};
 
 function SectionsList(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material_Stack__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  var selected_section_id = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.section ? (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.section.id : -1;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material_Stack__WEBPACK_IMPORTED_MODULE_3__["default"], {
     justifyItems: "stretch",
     sx: {
       flexGrow: 1,
       bgcolor: 'primary.superlight'
     },
-    children: props.ws.sections.map(function (s) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(_mui_material_Box__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        sx: {
-          py: 1,
-          px: 2,
-          borderLeft: 4,
-          borderColor: s.color
-        },
-        children: [s.name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_EditSectionDialog__WEBPACK_IMPORTED_MODULE_0__["default"], {
-          sc: s,
+    children: props.ws.sections.map(function (sc) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], _objectSpread(_objectSpread({}, selected_section_id == sc.id ? selectedProps(sc) : linkProps(props.ws, sc)), {}, {
+        children: [sc.name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_EditSectionDialog__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          sc: sc,
           ws: props.ws
         })]
-      }, s.id);
+      }), sc.id);
     })
   });
 }
@@ -32478,12 +32514,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Think)
 /* harmony export */ });
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/styles/useTheme.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/styles/useTheme.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
 /* harmony import */ var _BordersProps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BordersProps */ "./resources/js/Thinks/BordersProps.js");
-/* harmony import */ var _Sections_Colors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Sections/Colors */ "./resources/js/Sections/Colors.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -32495,33 +32529,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
 function Think(_ref) {
   var data = _ref.data;
-  var getTextColor = (0,_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"])().palette.getContrastText;
-  var sections = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props.workspace.sections;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  var getTextColor = (0,_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"])().palette.getContrastText;
+  var color = data.thinkable.color || (0,_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"])().palette.workspace.main;
+  var dateColor = (0,_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"])().palette.primary.superlight;
+  var date = new Date(data.created_at).toLocaleDateString('it-IT', {
+    day: '2-digit',
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long'
+  });
+  date = date.charAt(0).toUpperCase() + date.slice(1);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
       sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingLeft), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.leftBorders),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
         sx: {
-          bgcolor: _Sections_Colors__WEBPACK_IMPORTED_MODULE_1__["default"][data.id],
+          bgcolor: color,
           borderRadius: 4,
           py: 2,
-          color: getTextColor(_Sections_Colors__WEBPACK_IMPORTED_MODULE_1__["default"][data.id]),
+          color: getTextColor(color),
           fontSize: 'caption',
           writingMode: 'vertical-lr',
           transform: 'rotate(-180deg)'
         },
-        children: data.thinkable_type
+        children: data.thinkable.name
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
       sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingCenter), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.allBorders),
       children: data.content
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
       sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingRight), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.rightBorders),
-      children: "Prova"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        sx: {
+          bgcolor: dateColor,
+          borderRadius: 4,
+          py: 2,
+          color: getTextColor(dateColor),
+          fontSize: 'caption',
+          writingMode: 'vertical-lr',
+          transform: 'rotate(-180deg)'
+        },
+        children: date
+      })
     })]
   });
 }
@@ -32581,10 +32632,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ThinksHeader)
 /* harmony export */ });
-/* harmony import */ var _mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/icons-material/Add */ "./node_modules/@mui/icons-material/Add.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/styles/useTheme.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Button/Button.js");
+/* harmony import */ var _mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/icons-material/Add */ "./node_modules/@mui/icons-material/Add.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Box/Box.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/esm/Button/Button.js");
 /* harmony import */ var _BordersProps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BordersProps */ "./resources/js/Thinks/BordersProps.js");
 /* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../theme */ "./resources/js/theme.js");
 /* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_theme__WEBPACK_IMPORTED_MODULE_1__);
@@ -32604,22 +32654,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function ThinksHeader(_ref) {
   var id = _ref.id;
-  console.log((0,_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"])().palette.action.hoverOpacity);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
       sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingLeft), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topLeftBorders)
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
       sx: _objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topBorders),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
         sx: {
           width: "100%",
           justifyContent: "flex-end",
           px: 1,
           py: 0.5
         },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_icons_material_Add__WEBPACK_IMPORTED_MODULE_5__["default"], {})
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
       sx: _objectSpread(_objectSpread({}, _BordersProps__WEBPACK_IMPORTED_MODULE_0__.spacingRight), _BordersProps__WEBPACK_IMPORTED_MODULE_0__.topRightBorders)
     })]
   });
@@ -32658,7 +32707,6 @@ function ThinksList(props) {
   var page_props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props;
   if (page_props.workspace) thinks = page_props.workspace.thinks;
   if (page_props.section) thinks = page_props.section.thinks;
-  console.log(thinks);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
     display: "grid",
     gridTemplateColumns: "min-content auto min-content",
@@ -33064,6 +33112,10 @@ __webpack_require__.r(__webpack_exports__);
 function SelectedWorkspacePanel(_ref) {
   var ws = _ref.ws;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    sx: {
+      borderLeft: 4,
+      borderColor: 'workspace'
+    },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Sections_SectionsList__WEBPACK_IMPORTED_MODULE_3__["default"], {
       ws: ws
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -33117,37 +33169,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+var common_sx = function common_sx(top) {
+  return {
+    borderTop: top ? 0 : 1
+  };
+};
+
+var linkProps = function linkProps(id) {
+  return {
+    component: _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link,
+    href: route('workspace', {
+      ws: id
+    })
+  };
+};
+
+var selectedProps = function selectedProps(top) {
+  return {
+    selected: true,
+    sx: _objectSpread({
+      borderLeft: 4,
+      borderColor: 'workspace'
+    }, common_sx(top))
+  };
+};
+
+var unselectedProps = function unselectedProps(top) {
+  return {
+    selected: false,
+    sx: _objectSpread({}, common_sx(top))
+  };
+};
+
 function Workspaces(props) {
   var selected_workspace_id = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.workspace ? (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.workspace.id : -1;
   var workspaces_list = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.user.workspaces;
-
-  var common_sx = function common_sx(id) {
-    return {
-      borderTop: id == workspaces_list[0].id ? 0 : 1
-    };
-  };
-
-  var linkProps = function linkProps(id) {
-    return {
-      component: _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link,
-      href: route('workspace', {
-        ws: id
-      }),
-      sx: _objectSpread({
-        flexGrow: 0
-      }, common_sx(id))
-    };
-  };
-
-  var selectedProps = function selectedProps(id) {
-    return {
-      selected: true,
-      sx: _objectSpread({
-        flexGrow: 0
-      }, common_sx(id))
-    };
-  };
-
+  var is_a_section_selected = !!(0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.section;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     justifyContent: "stretch",
     sx: {
@@ -33156,7 +33214,7 @@ function Workspaces(props) {
     },
     children: [workspaces_list.map(function (w) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], _objectSpread(_objectSpread({}, selected_workspace_id == w.id ? selectedProps(w.id) : linkProps(w.id)), {}, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], _objectSpread(_objectSpread(_objectSpread({}, selected_workspace_id == w.id && !is_a_section_selected ? {} : linkProps(w.id)), selected_workspace_id == w.id ? selectedProps(workspaces_list[0].id == w.id) : unselectedProps(workspaces_list[0].id == w.id)), {}, {
           children: w.name
         })), selected_workspace_id == w.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SelectedWorkspacePanel__WEBPACK_IMPORTED_MODULE_2__["default"], {
           ws: (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.workspace
@@ -33268,6 +33326,9 @@ module.exports = {
     primary: {
       main: '#2A2A2A',
       superlight: '#d3d3d3'
+    },
+    workspace: {
+      main: '#545454'
     },
     red: '#ED4337',
     text: {

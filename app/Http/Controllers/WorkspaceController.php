@@ -10,9 +10,14 @@ use Inertia\Inertia;
 class WorkspaceController extends Controller
 {
     // Workspace
-    public static function viewWorkspace(Request $request, Workspace $ws)
+    public static function viewWorkspace(Workspace $ws)
     {
-        return Inertia::render('Home', ['workspace' => $ws->load(['sections','thinks'])]);
+        if( $ws->user_id != Auth::user()->id )
+            return redirect()->route('home')->with('snackbars', [['error', 'Impossibile visualizzare spazi di lavoro altrui.']]);
+
+        $ws->load(['sections','thinks']);
+        $ws['thinks']->load('thinkable');
+        return Inertia::render('Home', ['workspace' => $ws ]);
     }
 
     public static function addWorkspace(Request $request)

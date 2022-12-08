@@ -18,7 +18,7 @@ function getComponent( breadcrumb ) {
 
 export default function BreadCrumbs() {
     const { breadcrumbs } = usePage().props
-
+    console.log( breadcrumbs );
     if( !breadcrumbs || breadcrumbs.length == 0 )
         return "";
 

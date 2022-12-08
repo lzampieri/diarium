@@ -11,10 +11,19 @@ use Inertia\Inertia;
 class SectionController extends Controller
 {
     // Section
-    // public static function viewWorkspace(Request $request, Workspace $ws)
-    // {
-    //     return Inertia::render('Home', ['workspace' => $ws->id]);
-    // }
+    public static function viewSection(Workspace $ws, Section $sc)
+    {
+        if( $ws->user_id != Auth::user()->id )
+            return redirect()->route('home')->with('snackbars', [['error', 'Impossibile visualizzare spazi di lavoro altrui.']]);
+
+        if( $sc->workspace->id != $ws->id )
+            return redirect()->route('section',[ 'ws' => $sc->workspace->id, 'sc' => $sc->id ] );
+
+        $ws->load('sections');
+        $sc->load('thinks');
+        $sc['thinks']->load('thinkable');
+        return Inertia::render('Home', ['workspace' => $ws, 'section' => $sc ]);
+    }
 
     public static function addSection(Request $request, Workspace $ws)
     {

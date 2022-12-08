@@ -13,7 +13,6 @@ export default function ThinksList( props ) {
         thinks = page_props.workspace.thinks
     if( page_props.section )
         thinks = page_props.section.thinks
-    console.log( thinks );
     return (
         <Box display="grid" gridTemplateColumns="min-content auto min-content" sx={{ m: 4 }}>
             <ThinksHeader key='header' />
